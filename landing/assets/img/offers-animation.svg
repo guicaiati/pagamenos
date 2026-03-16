@@ -1,0 +1,43 @@
+<svg class="offers-animation" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+
+<style>
+.symbol{
+font-family: monospace;
+font-weight: bold;
+font-size: 22px;
+fill:#22c55e;
+opacity:0;
+animation: float 4s infinite;
+}
+
+.symbol:nth-child(1){animation-delay:0s;}
+.symbol:nth-child(2){animation-delay:0.8s;}
+.symbol:nth-child(3){animation-delay:1.6s;}
+.symbol:nth-child(4){animation-delay:2.4s;}
+.symbol:nth-child(5){animation-delay:3.2s;}
+
+@keyframes float{
+0%{
+transform: translateY(20px);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+80%{
+opacity:1;
+}
+100%{
+transform: translateY(-40px);
+opacity:0;
+}
+}
+</style>
+
+<text class="symbol" x="40" y="150">$</text>
+<text class="symbol" x="90" y="160">%</text>
+<text class="symbol" x="140" y="150">2x</text>
+<text class="symbol" x="190" y="160">-50%</text>
+<text class="symbol" x="240" y="150">*</text>
+
+</svg>

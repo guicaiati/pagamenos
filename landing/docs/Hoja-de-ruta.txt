@@ -1,0 +1,83 @@
+Guillermo, te preparo una hoja de ruta clara para lanzar la landing y validar la idea paso a paso. La idea es que en 2–3 semanas sepas si la app tiene potencial real. 🚀
+Hoja de ruta para validar tu app
+Fase 1 — Crear la landing (1–2 días)
+Podés hacerla muy simple usando:
+Carrd
+Framer
+Notion
+Como sos diseñador, incluso podrías diseñarla en Figma primero.
+Estructura ideal de la landing
+1️⃣ Título fuerte
+Descubrí dónde pagar más barato según tus tarjetas.
+Subtítulo:
+La app que calcula el precio final real con descuentos de bancos y billeteras.
+2️⃣ Ejemplo real
+Mostrar algo así:
+Café con leche en McDonald's
+Precio normal
+$2500
+Con Personal Pay
+$1750
+Con Mercado Pago
+$2000
+Texto:
+Nuestra app te muestra automáticamente el precio más barato cerca tuyo.
+3️⃣ Cómo funciona
+3 pasos simples:
+1️⃣ Elegís tus medios de pago
+2️⃣ Buscás un producto
+3️⃣ La app te muestra dónde pagar menos
+4️⃣ Botón principal
+Botón grande:
+“Quiero probar la app antes que nadie”
+Formulario simple:
+email
+qué apps usa
+5️⃣ Mensaje final
+Estamos lanzando primero en Buenos Aires con cafeterías y fast food.
+Fase 2 — Conseguir tráfico (1 semana)
+Publicar en lugares donde está la gente que busca descuentos.
+Apps clave:
+Facebook
+Reddit
+TikTok
+Instagram
+Contenido ideal:
+Post simple
+Estoy creando una app que te dice dónde pagar más barato según tus tarjetas y billeteras.
+Ejemplo: un café puede costar $2500 o $1750 dependiendo cómo pagues.
+Si te interesa probarla antes que nadie:
+[link]
+Fase 3 — Objetivo de validación
+Tenés que medir interés real.
+Metas:
+100 personas → hay curiosidad
+300 personas → buena señal
+1000 personas → idea fuerte
+Fase 4 — Si funciona
+Siguiente paso:
+prototipo interactivo en Figma.
+Pantallas mínimas:
+onboarding
+selección de medios de pago
+buscador
+resultados
+Luego podés construir el MVP con:
+Flutter
+Firebase
+Idea de nombre para la landing
+Algunos que pueden funcionar bien:
+Descuentómetro
+PrecioReal
+PagoSmart
+PromoRadar
+PagaMenos
+💡 Consejo importante de startup
+La landing no tiene que explicar todo.
+Tiene que responder una sola pregunta:
+“¿Esta app me hace ahorrar plata?”
+Si querés, puedo ayudarte con algo muy útil:
+1️⃣ Diseñarte la landing perfecta para esta app (estructura UX completa).
+2️⃣ Mostrarte cómo conseguir 1000 visitas en 48 horas para validarla.
+3️⃣ Explicarte una función que podría hacer esta app viral en Argentina.
+Esa función puede hacer que la gente la use todos los días.
