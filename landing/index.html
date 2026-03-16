@@ -329,7 +329,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            max-width: 480px;
+            max-width: 800px;
             margin: 40px auto 0;
         }
 
@@ -343,6 +343,7 @@
             outline: none;
             backdrop-filter: blur(5px);
             transition: background 0.3s;
+            font-family: inherit;
         }
 
         .input-luxe::placeholder {
@@ -351,6 +352,7 @@
 
         .input-luxe:focus {
             background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .btn-dark {
@@ -359,6 +361,16 @@
             padding: 20px;
             border-radius: 18px;
             font-size: 16px;
+            font-family: inherit;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+        
+        .btn-dark:hover {
+            background: #222;
+            transform: translateY(-2px);
         }
 
         .trust-text {
@@ -435,15 +447,19 @@
 
             .waitlist-form {
                 flex-direction: row;
+                justify-content: center;
+                align-items: stretch;
             }
 
             .waitlist-form .input-luxe {
                 flex: 1;
+                max-width: 300px;
             }
 
             .btn-dark {
                 width: auto;
                 padding: 0 40px;
+                white-space: nowrap;
             }
 
             .mockup-wrapper {
@@ -636,9 +652,10 @@
                 <h2>¿Querés ser de los primeros?</h2>
                 <p>Unite a las +300 personas que ya están esperando para empezar a cuidar su bolsillo.</p>
 
-                <form class="waitlist-form">
-                    <input type="email" placeholder="Tu email principal" class="input-luxe" required>
-                    <button type="submit" class="btn btn-dark">Quiero el acceso</button>
+                <form id="waitlist" class="waitlist-form">
+                    <input type="text" name="name" placeholder="Tu nombre" class="input-luxe" required>
+                    <input type="email" name="email" placeholder="Tu email principal" class="input-luxe" required>
+                    <button type="submit" class="btn btn-dark">Unirse a la lista</button>
                 </form>
 
                 <div class="trust-text">No enviamos spam. Solo noticias importantes del lanzamiento.</div>
@@ -651,6 +668,33 @@
         </footer>
     </div>
 
+    <script>
+        document.getElementById("waitlist").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = "Enviando...";
+            btn.disabled = true;
+
+            fetch("https://script.google.com/macros/s/AKfycbxCrZEi50D0DYHAI719SjYfAVX3CEhTxbXCAonRMdNDrIWEk359UEzCypOiA37AMmFHVA/exec", {
+                method: "POST",
+                body: new FormData(this)
+            })
+                .then(() => {
+                    alert("¡Gracias por unirte a la lista!");
+                    this.reset();
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Hubo un error. Por favor intentá nuevamente.");
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+        });
+    </script>
 </body>
 
 </html>
