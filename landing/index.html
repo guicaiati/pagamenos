@@ -329,31 +329,52 @@
     </div>
 
     <script>
-        document.getElementById("waitlist").addEventListener("submit", function (e) {
+        const form = document.getElementById("waitlist");
+
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const btn = this.querySelector('button[type="submit"]');
+            const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerText;
             btn.innerText = "Enviando...";
             btn.disabled = true;
 
-            fetch("https://script.google.com/macros/s/AKfycbzk75TzwhOKwkEbDBwZiuHOf0YDiX_116KHpXfu8QZkrdybobY3ldqeJzr33BnHnPXTUA/exec", {
-                method: "POST",
-                body: new FormData(this)
-            })
-                .then(() => {
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxwUUYYXeovWioeWmRq8I-H8Dgp8xqrMFn5-PIr0eAsrfnZCSwvA45VsylNSGknPSw/exec";
+
+            try {
+                const res = await fetch(scriptURL, {
+                    method: "POST",
+                    body: new FormData(form)
+                });
+
+                const json = await res.json();
+
+                if (json.status === "duplicado" || json.status === "nuevo") {
+                    const successTitle = document.querySelector('#waitlist-success h2');
+                    const successText = document.querySelector('#waitlist-success p');
+
+                    if (json.status === "duplicado") {
+                        successTitle.innerText = "¡Ya sos parte! 🎉";
+                        successText.innerHTML = "Tu correo ya estaba registrado en la lista de espera.<br>¡Pronto te enviaremos novedades de PagaMenos!";
+                    } else {
+                        successTitle.innerText = "¡Gracias por sumarte! 🎉";
+                        successText.innerHTML = "Tu lugar en la lista de espera de PagaMenos está confirmado.<br>Muy pronto te enviaremos novedades importantes.";
+                    }
+
                     // Ocultar formulario y mostrar mensaje de éxito
                     document.getElementById('waitlist-unsubmitted').style.display = 'none';
                     const successMsg = document.getElementById('waitlist-success');
                     successMsg.style.display = 'block';
                     successMsg.style.animation = 'fadeInUp 0.8s ease-out';
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert("Hubo un error. Por favor intentá nuevamente.");
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                });
+                } else {
+                    throw new Error("Respuesta inesperada");
+                }
+            } catch (error) {
+                console.error('Error!', error.message);
+                alert("Hubo un error al registrarte. Por favor intentá nuevamente.");
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         });
     </script>
 </body>
