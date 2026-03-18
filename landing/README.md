@@ -3,28 +3,23 @@
   <img src="assets/img/logo-green.svg" alt="PagaMenos Logo" height="150">
 </div>
 
-# PagaMenos - App Project
+# PagaMenos Landing Page
 
-## Idea de la App (Actualizada)
-**PagaMenos** es una aplicación diseñada para combatir la "fatiga de promociones" en Argentina. En lugar de limitarse a listar descuentos (ej. "30% off"), la app utiliza una **calculadora inteligente (Smart Calculation)** para mostrar el **Precio Final Real** de un producto (ej. "¿Cuánto pago hoy por un café en Starbucks con Personal Pay vs. Mercado Pago vs. Galicia?").
+Este directorio contiene los archivos correspondientes a la **Fase 1** del proyecto: la validación del mercado mediante una página de aterrizaje (Landing Page) de alta conversión.
 
-### Principales Diferenciadores:
-1. **Resolución de Pain Point Real:** Alivia la carga mental de recordar topes de reintegros y días de promociones de +15 bancos y billeteras.
-2. **Privacidad:** No requiere vincular cuentas ni tarjetas, el usuario solo indica qué métodos de pago posee.
-3. **Efecto Red y Viralidad:** Ideal para ser recomendada ("fijate dónde pagar menos").
+## Propósito de este Módulo
+La landing page ha sido diseñada con un enfoque **mobile-first** y estética **premium**, optimizada para capturar el interés de los usuarios y construir una base de datos sólida (Waitlist) antes del desarrollo técnico de la aplicación.
 
-### Hoja de Ruta Actual:
-- **Fase 1:** Validación de idea mediante la **Landing Page** (ya creada, estructurada para captar correos de early adopters).
-- **Fase 2:** Tráfico orgánico y en redes sociales en grupos objetivos (estudiantes, oficinistas en CABA).
-- **Fase 3:** Medición de interés (Meta: 1,000 usuarios en lista de espera).
-- **Fase 4:** Desarrollo del Prototipo en Figma, y posterior construcción del MVP usando Flutter y Firebase.
+### Características Implementadas:
+1. **Diseño Moderno y Glassmorphism:** Interfaz visual impactante con gradientes suaves y efectos de desenfoque, diseñada para generar confianza y profesionalismo.
+2. **Sistema de Captación (Waitlist):** Integración con **Google Sheets** y **Google Apps Script** para el almacenamiento automático de leads.
+3. **Flujo de Notificación Automatizado:** Envío inmediato de emails de bienvenida personalizados mediante **MailApp**, asegurando una experiencia interactiva desde el primer contacto.
+4. **Optimización SEO y Social Media:** Etiquetas **Open Graph** configuradas para visualización enriquecida al compartir en redes sociales y WhatsApp.
+
+## Componentes Técnicos
+- `index.html`: Estructura semántica optimizada para motores de búsqueda y accesibilidad.
+- `assets/css/styles.css`: Estilos desacoplados para facilitar el mantenimiento y la escalabilidad del diseño.
+- `assets/img/`: Recursos gráficos vectorizados (SVG) para asegurar una nitidez perfecta en cualquier resolución de pantalla.
 
 ---
-
-## Estructura del Proyecto
-
-Se ha organizado la carpeta para mantener el estándar de un proyecto web estructurado:
-
-- `/index.html` - La Landing Page principal (renombrada desde `untitledLP.html`) lista para ser desplegada en producción.
-- `/assets/img/logo.svg` - Logo vectorizado ajustado con el verde que hace match a la paleta de colores.
-- `/docs/` - Toda la documentación esencial, análisis de mercado (MBP), hoja de ruta (Roadmap) y mejoras de diseño UI/UX.
+*Este componente es la pieza clave para la validación del PMF (Product-Market Fit) del ecosistema PagaMenos.*
