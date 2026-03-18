@@ -1,6 +1,6 @@
 <div>
-  <img src="assets/img/offers-animation.svg" alt="Offers Animation" height="40"><br>
-  <img src="assets/img/logo.svg" alt="PagaMenos Logo" height="60">
+  <img src="assets/img/offers-animation.svg" alt="Offers Animation" height="90"><br>
+  <img src="assets/img/logo-green.svg" alt="PagaMenos Logo" height="150">
 </div>
 
 # PagaMenos - App Project
