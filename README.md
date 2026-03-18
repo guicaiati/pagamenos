@@ -1,6 +1,6 @@
 <div>
-  <img src="landing/assets/img/offers-animation.svg" alt="Offers Animation" height="90"><br>
-  <img src="landing/assets/img/logo-green.svg" alt="PagaMenos Logo" height="150">
+  <img src="landing/assets/img/hero-animacion.svg" alt="Offers Animation" height="90"><br>
+  <img src="landing/assets/img/pagamenos-logo-green.svg" alt="PagaMenos Logo" height="150">
 </div>
 
 # PagaMenos - App Project
@@ -26,5 +26,5 @@
 Se ha organizado la carpeta para mantener el estándar de un proyecto web estructurado:
 
 - `/index.html` - La Landing Page principal (renombrada desde `untitledLP.html`) lista para ser desplegada en producción.
-- `/assets/img/logo.svg` - Logo vectorizado ajustado con el verde que hace match a la paleta de colores.
+- `/assets/img/pagamenos-logo-green.svg` - Logo vectorizado ajustado con el verde que hace match a la paleta de colores.
 - `/docs/` - Toda la documentación esencial, análisis de mercado (MBP), hoja de ruta (Roadmap) y mejoras de diseño UI/UX.

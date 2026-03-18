@@ -1,6 +1,6 @@
 <div>
-  <img src="assets/img/offers-animation.svg" alt="Offers Animation" height="90"><br>
-  <img src="assets/img/logo-green.svg" alt="PagaMenos Logo" height="150">
+  <img src="assets/img/hero-animacion.svg" alt="Offers Animation" height="90"><br>
+  <img src="assets/img/pagamenos-logo-green.svg" alt="PagaMenos Logo" height="150">
 </div>
 
 # PagaMenos Landing Page
