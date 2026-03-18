@@ -5,7 +5,7 @@
 font-family: monospace;
 font-weight: bold;
 font-size: 22px;
-fill: white;
+fill:#22c55e;
 opacity:0;
 animation: float 4s infinite;
 }
