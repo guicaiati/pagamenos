@@ -1,0 +1,92 @@
+[
+  {
+    "comercio": "Burger King",
+    "producto": "Combo Whopper Junior",
+    "precio": 12500
+  },
+  {
+    "comercio": "Burger King",
+    "producto": "Combo King de Pollo",
+    "precio": 18200
+  },
+  {
+    "comercio": "Burger King",
+    "producto": "Combo Cuarto XL",
+    "precio": 19800
+  },
+  {
+    "comercio": "Burger King",
+    "producto": "Combo Ensalada Caesar",
+    "precio": 9500
+  },
+  {
+    "comercio": "Burger King",
+    "producto": "Combo Tostado J&Q + Café",
+    "precio": 7400
+  },
+  {
+    "comercio": "McDonald's",
+    "producto": "McCombo Mediano Grand tasty Doble",
+    "precio": 21450
+  },
+  {
+    "comercio": "McDonald's",
+    "producto": "Ensalada Caesar",
+    "precio": 9800
+  },
+  {
+    "comercio": "McDonald's",
+    "producto": "Cajita Feliz",
+    "precio": 15100
+  },
+  {
+    "comercio": "Mostaza",
+    "producto": "Combo TR1",
+    "precio": 13600
+  },
+  {
+    "comercio": "Mostaza",
+    "producto": "Big Bang Cheddar",
+    "precio": 18700
+  },
+  {
+    "comercio": "Mostaza",
+    "producto": "Pollo Crispy",
+    "precio": 15900
+  },
+  {
+    "comercio": "Mostaza",
+    "producto": "Tostado XL J&Q + Café o Jugo",
+    "precio": 8200
+  },
+  {
+    "comercio": "Wendy´s",
+    "producto": "Homestyle",
+    "precio": 17800
+  },
+  {
+    "comercio": "Milanga",
+    "producto": "Combo Romano Junior",
+    "precio": 10500
+  },
+  {
+    "comercio": "Starbucks",
+    "producto": "Mocha Latte/Frappuccino",
+    "precio": 9500
+  },
+  {
+    "comercio": "Solo Empanadas",
+    "producto": "Docena de Empanadas",
+    "precio": 16800
+  },
+  {
+    "comercio": "Colectivos",
+    "producto": "Pasaje de Colectivo (AMBA)",
+    "precio": 700
+  },
+  {
+    "comercio": "Subte",
+    "producto": "Viaje en Subte",
+    "precio": 1363
+  }
+]
