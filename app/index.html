@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PagaMenos | Responsive Minimalism</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Glow Background Effects -->
+    <div class="glow-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <main class="app-wrapper">
+            <header class="app-header">
+                <!-- Custom PagaMenos Mascot Logo SVG -->
+                <svg width="40" height="40" viewBox="0 0 100 100" class="logo-svg" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="20" width="70" height="50" rx="6" stroke="currentColor" stroke-width="6" />
+                    <path d="M35 70L30 85H70L65 70" stroke="currentColor" stroke-width="6" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <circle cx="40" cy="40" r="4" fill="currentColor" />
+                    <circle cx="60" cy="40" r="4" fill="currentColor" />
+                    <path d="M40 55C45 60 55 60 60 55" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                </svg>
+                <span class="logo-text">PagaMenos</span>
+            </header>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <i data-lucide="search" class="text-muted" style="width: 24px; height: 24px;"></i>
+                    <input type="text" id="busqueda" placeholder="¿Qué estás buscando hoy?" autocomplete="off">
+                </div>
+
+                <div class="filter-chips">
+                    <div class="chip active" data-value="Personal Pay">Personal Pay</div>
+                    <div class="chip active" data-value="MODO">MODO</div>
+                    <div class="chip" data-value="Mercado Pago">Mercado Pago</div>
+                    <div class="chip" data-value="Tarjeta">Tarjetas</div>
+                </div>
+
+                <div class="category-filters fade-in" style="margin-top: 20px;">
+                    <div class="cat-chip" data-category="desayuno_merienda" title="Desayuno y Merienda"
+                        aria-label="Desayuno y Merienda">
+                        <i data-lucide="coffee"></i>
+                    </div>
+                    <div class="cat-chip" data-category="almuerzo_cena" title="Almuerzo y Cena"
+                        aria-label="Almuerzo y Cena">
+                        <i data-lucide="utensils"></i>
+                    </div>
+                    <div class="cat-chip" data-category="transporte" title="Transporte" aria-label="Transporte">
+                        <i data-lucide="bus"></i>
+                    </div>
+                    <div class="cat-chip" data-category="farmacia" title="Farmacia" aria-label="Farmacia">
+                        <i data-lucide="pill"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultados" class="fade-in">
+                <!-- Stacked cards rendered side-by-side in grid on desktop -->
+            </div>
+
+            <footer class="bottom-nav">
+                <a href="#" class="nav-link active"><i data-lucide="home" style="width: 28px; height: 28px;"></i></a>
+                <a href="#" class="nav-link"><i data-lucide="map" style="width: 28px; height: 28px;"></i></a>
+                <a href="#" class="nav-link"><i data-lucide="user" style="width: 28px; height: 28px;"></i></a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+
+</html>
