@@ -6,7 +6,6 @@ let activeCategory = null;
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
     
-    // Category Toggle Logic (5 separate categories)
     document.querySelectorAll('.cat-chip').forEach(chip => {
         chip.addEventListener('click', () => {
             const cat = chip.dataset.category;
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Payment Filter Chips
     document.querySelectorAll('.chip').forEach(chip => {
         chip.addEventListener('click', () => {
             const val = chip.dataset.value;
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Fetch BOTH Promos and Prices
     Promise.all([
         fetch('promos.json').then(res => res.json()),
         fetch('precios.json').then(res => res.json())
@@ -113,7 +110,6 @@ function buscar() {
         }
     });
 
-    // WINNER = MINIMUM FINAL PRICE
     let minFinalPrice = Infinity;
     options.forEach(opt => {
         if (opt.finalPrice < minFinalPrice) minFinalPrice = opt.finalPrice;
@@ -178,6 +174,9 @@ function render(options) {
             const globalBestClass = benefit.isGlobalBest ? 'global-best' : '';
             const starIcon = benefit.isGlobalBest ? '<i data-lucide="star" class="star-icon"></i>' : '';
             
+            // DYNAMIC BORDER FOR HIGHLIGHT
+            const borderStyle = benefit.isGlobalBest ? '1.5px solid var(--accent-green)' : '1px solid rgba(255, 255, 255, 0.05)';
+
             let priceHUD = "";
             const matchPrice = precios.find(pr => 
                 pr.comercio === benefit.comercio && 
@@ -190,7 +189,6 @@ function render(options) {
                 const final = benefit.finalPrice;
                 const saved = original - final;
 
-                // YELLOW STYLE HERO (Above big text)
                 priceHUD = `
                     <div class="price-hero" style="color: #FFD100; font-size: 14px; font-weight: 900; margin-bottom: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
                         <span>PAGÁS FINAL: $${final.toLocaleString('es-AR')}</span>
@@ -200,7 +198,7 @@ function render(options) {
             }
 
             benefitsHTML += `
-                <div class="benefit-block ${isHighlight ? 'highlight' : ''} ${globalBestClass}" style="padding: 15px; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 8px;">
+                <div class="benefit-block ${isHighlight ? 'highlight' : ''} ${globalBestClass}" style="padding: 15px; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: ${borderStyle}; margin-bottom: 8px;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px;">
                         <span class="label-sm">${benefit.medio_pago} ${starIcon}</span>
                         <span class="tag-mini ${benefit.medio_pago === 'Personal Pay' ? 'purple' : ''} ${benefit.medio_pago === 'MODO' ? 'active-green' : ''}">${benefit.tipo_beneficio}</span>
