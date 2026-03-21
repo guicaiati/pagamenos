@@ -101,22 +101,33 @@ function buscar() {
                 p.detalle.toLowerCase().includes(pr.producto.toLowerCase())
             );
             if (matchPrice) {
-                const discount = parseValue(p.descuento);
-                benefit.finalPrice = Math.round(matchPrice.precio * (1 - discount / 100));
+                const discountPercentage = parseValue(p.descuento);
+                const original = matchPrice.precio;
+                
+                if (p.descuento === "2x1") {
+                    benefit.finalPrice = original; // Pagás el precio de 1
+                    benefit.effectivePrice = original / 2; // Pero cada uno te sale la mitad
+                    benefit.ahorro = original; // Ahorrás lo que vale el segundo
+                } else {
+                    benefit.finalPrice = Math.round(original * (1 - discountPercentage / 100));
+                    benefit.effectivePrice = benefit.finalPrice;
+                    benefit.ahorro = original - benefit.finalPrice;
+                }
             } else {
                 benefit.finalPrice = Infinity;
+                benefit.effectivePrice = Infinity;
             }
             options.push(benefit);
         }
     });
 
-    let minFinalPrice = Infinity;
+    let minEffectivePrice = Infinity;
     options.forEach(opt => {
-        if (opt.finalPrice < minFinalPrice) minFinalPrice = opt.finalPrice;
+        if (opt.effectivePrice < minEffectivePrice) minEffectivePrice = opt.effectivePrice;
     });
 
     let globalBestPerc = 0;
-    if (minFinalPrice === Infinity) {
+    if (minEffectivePrice === Infinity) {
         options.forEach(opt => {
             const val = parseValue(opt.descuento);
             if (val > globalBestPerc) globalBestPerc = val;
@@ -126,8 +137,8 @@ function buscar() {
     const isSpecialView = busqueda !== "" || activeCategory !== null;
     options.forEach(opt => {
         if (isSpecialView) {
-            if (minFinalPrice !== Infinity) {
-                opt.isGlobalBest = opt.finalPrice === minFinalPrice;
+            if (minEffectivePrice !== Infinity) {
+                opt.isGlobalBest = opt.effectivePrice === minEffectivePrice;
             } else if (globalBestPerc > 0) {
                 opt.isGlobalBest = parseValue(opt.descuento) === globalBestPerc;
             }
@@ -137,9 +148,9 @@ function buscar() {
     });
 
     options.sort((a, b) => {
-        if (a.finalPrice !== Infinity && b.finalPrice !== Infinity) return a.finalPrice - b.finalPrice;
-        if (a.finalPrice !== Infinity) return -1;
-        if (b.finalPrice !== Infinity) return 1;
+        if (a.effectivePrice !== Infinity && b.effectivePrice !== Infinity) return a.effectivePrice - b.effectivePrice;
+        if (a.effectivePrice !== Infinity) return -1;
+        if (b.effectivePrice !== Infinity) return 1;
         return parseValue(b.descuento) - parseValue(a.descuento);
     });
 
@@ -184,10 +195,8 @@ function render(options) {
             );
 
             if (matchPrice) {
-                const discount = parseValue(benefit.descuento);
-                const original = matchPrice.precio;
                 const final = benefit.finalPrice;
-                const saved = original - final;
+                const saved = benefit.ahorro;
 
                 priceHUD = `
                     <div class="price-hero" style="color: #FFD100; font-size: 14px; font-weight: 900; margin-bottom: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
@@ -197,8 +206,17 @@ function render(options) {
                 `;
             }
 
+            const formaPago = benefit.forma_pago || 'Tarjeta';
+            const iconMap = {
+                'QR': 'qr-code',
+                'Tarjeta': 'credit-card',
+                'NFC': 'nfc',
+                'QR/Tarjeta': 'smartphone'
+            };
+            const iconName = iconMap[formaPago] || 'credit-card';
+
             benefitsHTML += `
-                <div class="benefit-block ${isHighlight ? 'highlight' : ''} ${globalBestClass}" style="padding: 15px; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: ${borderStyle}; margin-bottom: 8px;">
+                <div class="benefit-block ${isHighlight ? 'highlight' : ''} ${globalBestClass}" style="padding: 15px; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: ${borderStyle}; margin-bottom: 12px; position: relative; overflow: hidden;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px;">
                         <span class="label-sm">${benefit.medio_pago} ${starIcon}</span>
                         <span class="tag-mini ${benefit.medio_pago === 'Personal Pay' ? 'purple' : ''} ${benefit.medio_pago === 'MODO' ? 'active-green' : ''}">${benefit.tipo_beneficio}</span>
@@ -208,7 +226,12 @@ function render(options) {
                         <div class="benefit-value" style="font-size: 32px; font-weight: 900; line-height: 1;">${benefit.descuento}</div>
                     </div>
                     <div class="benefit-detail" style="font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-top: 5px; margin-bottom: 10px;">${benefit.detalle}</div>
-                    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                    
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <i data-lucide="${iconName}" style="width: 14px; height: 14px; color: var(--accent-green);"></i>
+                            <span style="font-size: 10px; font-weight: 700; color: var(--text-muted); opacity: 0.8;">PAGÁS CON ${formaPago.toUpperCase()}</span>
+                        </div>
                         <span class="label-sm" style="font-size: 8px;">VIGENCIA: ${benefit.vigencia}</span>
                     </div>
                 </div>
@@ -216,15 +239,10 @@ function render(options) {
         });
 
         const isTransport = merchantBenefits[0].categoria === 'transporte';
-        const medio = merchantBenefits[0].medio_pago;
 
         groupDiv.innerHTML = `
             <div class="merchant-name" style="font-size: 18px; font-weight: 800; margin-bottom: 12px;">${comercio}</div>
             ${benefitsHTML}
-            <div class="payment-method-bar" style="display: flex; align-items: center; gap: 10px; padding: 12px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; margin: 10px 0; border: 1px dashed rgba(255, 255, 255, 0.1);">
-                <i data-lucide="${medio === 'Tarjeta' ? 'credit-card' : 'smartphone'}"></i>
-                <span style="font-size: 11px; color: var(--text-muted);">Pagás con <strong>${medio.toUpperCase()}</strong></span>
-            </div>
             <div class="actions-container" style="display: flex; gap: 8px; margin-top: 5px;">
                 <button class="btn-primary" style="flex: 1; background: var(--accent-green); border: none; padding: 12px 20px; border-radius: 25px; color: var(--bg-deep); font-size: 13px; font-weight: 700; cursor: pointer;">${isTransport ? 'VER DETALLES' : 'VER SUCURSALES'}</button>
             </div>

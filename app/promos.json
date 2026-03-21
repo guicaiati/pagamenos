@@ -8,7 +8,8 @@
     "tags": ["helado", "cono", "postre", "merienda", "desayuno"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Cono helado con QR o Tarjeta Visa Personal Pay",
-    "vigencia": "31/12/2026"
+    "vigencia": "31/12/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -19,7 +20,8 @@
     "tags": ["whopper", "hamburguesas", "combos", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Combo Whopper Junior con QR o Tarjeta Visa Personal Pay",
-    "vigencia": "31/12/2026"
+    "vigencia": "31/12/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -30,7 +32,8 @@
     "tags": ["pollo", "hamburguesas", "combos", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Combo King de Pollo con QR o Tarjeta Visa Personal Pay",
-    "vigencia": "31/12/2026"
+    "vigencia": "31/12/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -41,7 +44,8 @@
     "tags": ["cuarto xl", "hamburguesas", "carne", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Combo Cuarto XL con QR o Tarjeta Visa Personal Pay",
-    "vigencia": "31/12/2026"
+    "vigencia": "31/12/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -52,7 +56,8 @@
     "tags": ["ensalada", "caesar", "saludable", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Combo Ensalada Caesar con QR o Tarjeta Visa Personal Pay",
-    "vigencia": "31/12/2026"
+    "vigencia": "31/12/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -63,7 +68,8 @@
     "tags": ["desayuno", "merienda", "cafe", "tostado"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Combo Tostado J&Q + Café con QR o Tarjeta Visa Personal Pay",
-    "vigencia": "31/12/2026"
+    "vigencia": "31/12/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -74,7 +80,8 @@
     "tags": ["postre", "helado", "sundae", "dulce", "cupon", "merienda"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Sundae con Cupón + Visa Personal Pay",
-    "vigencia": "30/04/2026"
+    "vigencia": "30/04/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -85,7 +92,8 @@
     "tags": ["hamburguesa", "combo", "grand tasty", "cupon", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En McCombo Mediano Grand tasty Doble + Cupón",
-    "vigencia": "30/04/2026"
+    "vigencia": "30/04/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -96,7 +104,8 @@
     "tags": ["ensalada", "caesar", "saludable", "cupon", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Ensalada Caesar con Cupón",
-    "vigencia": "30/04/2026"
+    "vigencia": "30/04/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -107,7 +116,8 @@
     "tags": ["conos", "helado", "postre", "cupon", "merienda"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En 2 conos con Cupón",
-    "vigencia": "30/04/2026"
+    "vigencia": "30/04/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -118,7 +128,8 @@
     "tags": ["cajita feliz", "niños", "juguete", "cupon", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En 2 cajitas felices con Cupón",
-    "vigencia": "30/04/2026"
+    "vigencia": "30/04/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -129,7 +140,8 @@
     "tags": ["postre", "helado", "sundae", "dulce de leche", "cupon", "merienda"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Sundae Dulce de Leche con Cupón",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -140,7 +152,8 @@
     "tags": ["hamburguesa", "combo tr1", "carne", "cupon", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Combo TR1 con Cupón",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -151,7 +164,8 @@
     "tags": ["tostado", "xl", "cafe", "desayuno", "merienda", "cupon"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Tostado XL J&Q + Café o Jugo con Cupón",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -162,7 +176,8 @@
     "tags": ["hamburguesa", "big bang", "cheddar", "cupon", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Big Bang Cheddar con Cupón",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -173,7 +188,8 @@
     "tags": ["pollo crispy", "hamburguesa", "cupon", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Pollo Crispy con Cupón",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "MODO",
@@ -184,7 +200,8 @@
     "tags": ["bares", "restaurantes", "gastronomia", "cena", "almuerzo", "salidas", "identite", "desayuno", "merienda"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Bares y Restaurantes | IDENTITÉ | CRÉDITO vía MODO QR | Tope mensual $50.000",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "MODO",
@@ -195,7 +212,8 @@
     "tags": ["bares", "restaurantes", "gastronomia", "cena", "almuerzo", "salidas", "plan sueldo", "desayuno", "merienda"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Bares y Restaurantes | PLAN SUELDO | CRÉDITO vía MODO QR | Tope mensual $20.000",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "MODO",
@@ -206,7 +224,8 @@
     "tags": ["bares", "restaurantes", "gastronomia", "cena", "almuerzo", "salidas", "cartera general", "desayuno", "merienda"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Bares y Restaurantes | CARTERA GENERAL | CRÉDITO vía MODO QR | Tope mensual $8.000",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "MODO",
@@ -217,7 +236,8 @@
     "tags": ["helado", "postre", "gelato", "ice cream", "merienda"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "Con Supervielle MODO QR/NFC | Tope mensual $10.000",
-    "vigencia": "31/05/2026"
+    "vigencia": "31/05/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "MODO",
@@ -228,7 +248,8 @@
     "tags": ["farmacia", "remedios", "salud", "cuotas", "bna"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "10% Reintegro + 3 cuotas sin interés | Presencial/Online | Tope $10.000 x mes",
-    "vigencia": "31/05/2026"
+    "vigencia": "31/05/2026",
+    "forma_pago": "Tarjeta"
   },
   {
     "medio_pago": "MODO",
@@ -239,7 +260,8 @@
     "tags": ["empanadas", "pizzas", "gastronomia", "cena", "almuerzo"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "Con Supervielle MODO QR | Tope mensual $10.000",
-    "vigencia": "31/05/2026"
+    "vigencia": "31/05/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "Personal Pay",
@@ -250,7 +272,44 @@
     "tags": ["homestyle", "hamburguesa", "pollo", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Homestyle con Visa Personal Pay",
-    "vigencia": "31/08/2026"
+    "vigencia": "31/08/2026",
+    "forma_pago": "Tarjeta"
+  },
+  {
+    "medio_pago": "Personal Pay",
+    "comercio": "Wendy´s",
+    "categoria": "comida",
+    "descuento": "25% OFF",
+    "tipo_beneficio": "Descuento",
+    "tags": ["daves", "dave", "hamburguesa", "carne", "almuerzo", "cena"],
+    "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
+    "detalle": "En Combo Dave´s Simple con Visa Personal Pay",
+    "vigencia": "31/08/2026",
+    "forma_pago": "Tarjeta"
+  },
+  {
+    "medio_pago": "Personal Pay",
+    "comercio": "Wendy´s",
+    "categoria": "comida",
+    "descuento": "20% OFF",
+    "tipo_beneficio": "Descuento",
+    "tags": ["capuchino", "tostado", "cafe", "desayuno", "merienda"],
+    "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
+    "detalle": "En Capuchino Grande + Tostado con Visa Personal Pay",
+    "vigencia": "31/08/2026",
+    "forma_pago": "Tarjeta"
+  },
+  {
+    "medio_pago": "Personal Pay",
+    "comercio": "Wendy´s",
+    "categoria": "comida",
+    "descuento": "20% OFF",
+    "tipo_beneficio": "Descuento",
+    "tags": ["capuchino", "medialuna", "cafe", "desayuno", "merienda"],
+    "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
+    "detalle": "En Capuchino Grande + Medialuna con Visa Personal Pay",
+    "vigencia": "31/08/2026",
+    "forma_pago": "Tarjeta"
   },
   {
     "medio_pago": "Personal Pay",
@@ -261,7 +320,8 @@
     "tags": ["milanesa", "junior", "romano", "cupon", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Combo Romano Junior con Cupón",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR/Tarjeta"
   },
   {
     "medio_pago": "MODO",
@@ -272,7 +332,8 @@
     "tags": ["empanadas", "pizzas", "gastronomia", "bancos", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves"],
     "detalle": "En Empanadas con MODO QR | Presencial | Tope $4.000 x semana | Mínimo $12.000",
-    "vigencia": "26/03/2026"
+    "vigencia": "26/03/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "MODO",
@@ -283,7 +344,8 @@
     "tags": ["empanadas", "pizzas", "gastronomia", "bancos", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves"],
     "detalle": "En Empanadas con MODO QR | Presencial | $4.000 por banco/semana | Mínimo $12.000",
-    "vigencia": "26/03/2026"
+    "vigencia": "26/03/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "MODO",
@@ -294,7 +356,8 @@
     "tags": ["cafe", "merienda", "desayuno", "cafeteria"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En Cafetería con MODO QR | Presencial | Tope mensual $5.000",
-    "vigencia": "31/03/2026"
+    "vigencia": "31/03/2026",
+    "forma_pago": "QR"
   },
   {
     "medio_pago": "Tarjeta",
@@ -305,7 +368,8 @@
     "tags": ["bondi", "colectivo", "transporte", "viajes", "nfc", "visa"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En pasajes de Colectivo | 100% Reintegro con VISA DÉBITO (NFC) desde el móvil | Tope $10.000",
-    "vigencia": "30/04/2026"
+    "vigencia": "30/04/2026",
+    "forma_pago": "NFC"
   },
   {
     "medio_pago": "Tarjeta",
@@ -316,7 +380,8 @@
     "tags": ["subte", "pasajes", "transporte", "viajes", "nfc", "visa"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En pasajes de Subte | 100% Reintegro con VISA DÉBITO (NFC) desde el móvil | Tope $10.000",
-    "vigencia": "30/04/2026"
+    "vigencia": "30/04/2026",
+    "forma_pago": "NFC"
   },
   {
     "medio_pago": "Tarjeta",
@@ -327,7 +392,8 @@
     "tags": ["cafe", "mocha", "frappuccino", "starbucks", "nfc", "visa", "merienda", "desayuno"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "Mocha Latte/Frappuccino | VISA CONTACTLESS (NFC) | Pedir en caja (No QR/No Delivery)",
-    "vigencia": "30/06/2026"
+    "vigencia": "30/06/2026",
+    "forma_pago": "NFC"
   },
   {
     "medio_pago": "Tarjeta",
@@ -338,7 +404,8 @@
     "tags": ["restaurante", "bar", "comida", "visa", "almuerzo", "cena"],
     "dias": ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"],
     "detalle": "En el total de la cuenta con Tarjeta VISA (Classic/Gold/Platinum/Signature/Prepaga)",
-    "vigencia": "30/06/2026"
+    "vigencia": "30/06/2026",
+    "forma_pago": "Tarjeta"
   },
   {
     "medio_pago": "Tarjeta",
