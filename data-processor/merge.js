@@ -1,4 +1,5 @@
 export function mergePrecios(actual, nuevos) {
+  let stats = { added: 0, updated: 0 };
   for (const nuevo of nuevos) {
     const existente = actual.find(
       p =>
@@ -7,17 +8,21 @@ export function mergePrecios(actual, nuevos) {
     );
 
     if (existente) {
-      existente.precio = nuevo.precio;
+      if (existente.precio !== nuevo.precio) {
+        existente.precio = nuevo.precio;
+        stats.updated++;
+      }
     } else {
       actual.push(nuevo);
+      stats.added++;
     }
   }
-  return actual;
+  return { data: actual, stats };
 }
 
 export function mergePromos(actual, nuevas) {
+  let stats = { added: 0, updated: 0 };
   for (const nueva of nuevas) {
-    // Duplicado Inteligente: Comercio + Medio de Pago + Descuento
     const existe = actual.find(p =>
       p.comercio.toLowerCase() === nueva.comercio.toLowerCase() &&
       p.medio_pago.toLowerCase() === nueva.medio_pago.toLowerCase() &&
@@ -25,14 +30,13 @@ export function mergePromos(actual, nuevas) {
     );
 
     if (!existe) {
-      console.log(`Añadiendo nueva promo: ${nueva.comercio}`);
       actual.push(nueva);
+      stats.added++;
     } else {
-      console.log(`Duplicado inteligente detectado: ${nueva.comercio} - ${nueva.medio_pago}`);
-      // Actualizamos solo el detalle y vigencia por si cambiaron
       existe.detalle = nueva.detalle;
       existe.vigencia = nueva.vigencia;
+      stats.updated++;
     }
   }
-  return actual;
+  return { data: actual, stats };
 }

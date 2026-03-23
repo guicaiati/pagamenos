@@ -233,30 +233,46 @@
         function renderPreview(data) {
             previewBody.innerHTML = "";
             
+            const getBadge = (status) => {
+                if (status === 'identical') return `<span class="tag-mini" style="background:rgba(55,255,180,0.05); color:rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.1);">SIN CAMBIOS</span>`;
+                if (status === 'update') return `<span class="tag-mini purple" style="border:1px solid rgba(160, 100, 255, 0.3);"><i data-lucide="info" style="width:10px; height:10px; display:inline-block; margin-right:3px;"></i> ACTUALIZACIÓN</span>`;
+                return `<span class="tag-mini" style="background:rgba(55,255,180,0.1); color:var(--accent-green);">NUEVO</span>`;
+            };
+
             data.precios.forEach((p, idx) => {
                 const tr = document.createElement('tr');
+                if (p.status === 'identical') tr.style.opacity = "0.5";
+                
+                const beforePrice = p.status === 'update' ? `<br><small style="color:var(--text-muted); font-size:10px; text-decoration:line-through;">Original: $${p.original.precio}</small>` : '';
+
                 tr.innerHTML = `
                     <td><span class="tag-type" style="background:rgba(255,209,0,0.1); color:#FFD100">PRECIO</span></td>
-                    <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="comercio" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">${p.comercio}</td>
+                    <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="comercio" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">${p.comercio} ${getBadge(p.status)}</td>
                     <td>-</td>
                     <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="producto" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">${p.producto}</td>
-                    <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="precio" class="tag-price" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">$${p.precio}</td>
+                    <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="precio" class="tag-price" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2); font-weight:800; color:${p.status === 'update' ? 'var(--accent-green)' : 'inherit'}">$${p.precio}${beforePrice}</td>
                 `;
                 previewBody.appendChild(tr);
             });
 
             data.promos.forEach((p, idx) => {
                 const tr = document.createElement('tr');
+                if (p.status === 'identical') tr.style.opacity = "0.5";
+
+                const beforeDetalle = p.status === 'update' ? `<br><small style="color:var(--text-muted); font-size:10px;">Anterior: ${p.original.detalle}</small>` : '';
+
                 tr.innerHTML = `
                     <td><span class="tag-type">PROMO</span></td>
-                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="comercio" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">${p.comercio}</td>
+                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="comercio" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">${p.comercio} ${getBadge(p.status)}</td>
                     <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="medio_pago" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2); color:#a064ff;">${p.medio_pago}</td>
-                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="detalle" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">${p.detalle}</td>
+                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="detalle" style="outline:none; cursor:text; border-bottom:1px dashed rgba(255,255,255,0.2);">${p.detalle}${beforeDetalle}</td>
                     <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="descuento" style="outline:none; cursor:text; font-weight:800; color:var(--accent-pink); border-bottom:1px dashed rgba(255,255,255,0.2);">${p.descuento}</td>
                 `;
                 previewBody.appendChild(tr);
             });
             
+            lucide.createIcons(); // Re-iniciar íconos nuevos
+
             if (data.precios.length === 0 && data.promos.length === 0) {
                 previewBody.innerHTML = "<tr><td colspan='5' style='text-align:center; padding:40px; color:var(--text-muted);'>No se detectaron datos relevantes en las imágenes.</td></tr>";
             }

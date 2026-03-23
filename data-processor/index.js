@@ -73,10 +73,52 @@ app.post("/upload", upload.array("files"), async (req, res) => {
     }
 
 
+    // Analizar duplicados antes de enviar la respuesta
+    const actualesPrecios = JSON.parse(fs.readFileSync(preciosPath, "utf8"));
+    const actualesPromos = JSON.parse(fs.readFileSync(promosPath, "utf8"));
+
+    const preciosTagged = allExtractedPrecios.map(p => {
+      const match = actualesPrecios.find(e => 
+        e.comercio.toLowerCase() === p.comercio.toLowerCase() && 
+        e.producto.toLowerCase() === p.producto.toLowerCase()
+      );
+      
+      let status = "new";
+      let original = null;
+      if (match) {
+        status = (match.precio == p.precio) ? "identical" : "update";
+        if (status === "update") original = { precio: match.precio };
+      }
+      
+      return { ...p, status, original };
+    });
+
+    const promosTagged = allExtractedPromos.map(p => {
+      const match = actualesPromos.find(e => 
+        e.comercio.toLowerCase() === p.comercio.toLowerCase() && 
+        e.medio_pago.toLowerCase() === p.medio_pago.toLowerCase() && 
+        e.descuento.toLowerCase() === p.descuento.toLowerCase()
+      );
+
+      let status = "new";
+      let original = null;
+      if (match) {
+        const isIdentical = 
+          match.detalle.toLowerCase() === p.detalle.toLowerCase() &&
+          match.vigencia.toLowerCase() === p.vigencia.toLowerCase();
+        status = isIdentical ? "identical" : "update";
+        if (status === "update") {
+          original = { detalle: match.detalle, vigencia: match.vigencia };
+        }
+      }
+
+      return { ...p, status, original };
+    });
+
     res.json({ 
       ok: true, 
-      precios: allExtractedPrecios, 
-      promos: allExtractedPromos 
+      precios: preciosTagged, 
+      promos: promosTagged 
     });
   } catch (error) {
     console.error("Error en extracción:", error.message);
@@ -93,13 +135,21 @@ app.post("/save", (req, res) => {
     let actualesPrecios = JSON.parse(fs.readFileSync(preciosPath, "utf8"));
     let actualesPromos = JSON.parse(fs.readFileSync(promosPath, "utf8"));
 
-    const finalPrecios = mergePrecios(actualesPrecios, nuevosPrecios || []);
-    const finalPromos = mergePromos(actualesPromos, nuevasPromos || []);
+    const resultPrecios = mergePrecios(actualesPrecios, nuevosPrecios || []);
+    const resultPromos = mergePromos(actualesPromos, nuevasPromos || []);
 
-    fs.writeFileSync(preciosPath, JSON.stringify(finalPrecios, null, 2));
-    fs.writeFileSync(promosPath, JSON.stringify(finalPromos, null, 2));
+    fs.writeFileSync(preciosPath, JSON.stringify(resultPrecios.data, null, 2));
+    fs.writeFileSync(promosPath, JSON.stringify(resultPromos.data, null, 2));
 
-    res.json({ ok: true, mensaje: "Base de datos actualizada correctamente" });
+    const totalAdded = resultPrecios.stats.added + resultPromos.stats.added;
+    const totalUpdated = resultPrecios.stats.updated + resultPromos.stats.updated;
+
+    let message = "Operación completada. ";
+    if (totalAdded > 0) message += `Se agregaron ${totalAdded} nuevos registros. `;
+    if (totalUpdated > 0) message += `Se detectaron y actualizaron ${totalUpdated} duplicados. `;
+    if (totalAdded === 0 && totalUpdated === 0) message = "No se realizaron cambios (los datos ya existen).";
+
+    res.json({ ok: true, message: message });
   } catch (error) {
     console.error("Error al guardar:", error);
     res.status(500).json({ error: error.message });
