@@ -204,16 +204,19 @@ function render(options) {
                         <span style="background: rgba(255, 209, 0, 0.15); font-size: 9px; padding: 2px 6px; border-radius: 4px;">AHORRÁS $${saved.toLocaleString('es-AR')}</span>
                     </div>
                 `;
+            }            const formaPago = benefit.forma_pago || 'Tarjeta';
+            
+            let iconHTML = `<i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`;
+            if (formaPago === 'QR') {
+                iconHTML = `<i data-lucide="qr-code" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`;
+            } else if (formaPago === 'NFC') {
+                iconHTML = `<i data-lucide="nfc" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`;
+            } else if (formaPago === 'QR/Tarjeta') {
+                iconHTML = `
+                    <i data-lucide="qr-code" style="width: 14px; height: 14px; color: var(--accent-green);"></i>
+                    <i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--accent-green);"></i>
+                `;
             }
-
-            const formaPago = benefit.forma_pago || 'Tarjeta';
-            const iconMap = {
-                'QR': 'qr-code',
-                'Tarjeta': 'credit-card',
-                'NFC': 'nfc',
-                'QR/Tarjeta': 'smartphone'
-            };
-            const iconName = iconMap[formaPago] || 'credit-card';
 
             benefitsHTML += `
                 <div class="benefit-block ${isHighlight ? 'highlight' : ''} ${globalBestClass}" style="padding: 15px; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: ${borderStyle}; margin-bottom: 12px; position: relative; overflow: hidden;">
@@ -229,7 +232,7 @@ function render(options) {
                     
                     <div style="display:flex; justify-content:space-between; align-items:center; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);">
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <i data-lucide="${iconName}" style="width: 14px; height: 14px; color: var(--accent-green);"></i>
+                            ${iconHTML}
                             <span style="font-size: 10px; font-weight: 700; color: var(--text-muted); opacity: 0.8;">PAGÁS CON ${formaPago.toUpperCase()}</span>
                         </div>
                         <span class="label-sm" style="font-size: 8px;">VIGENCIA: ${benefit.vigencia}</span>

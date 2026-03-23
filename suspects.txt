@@ -1,0 +1,63 @@
+﻿AN├üLISIS DE BASE: 37 promos.
+Buscando sospechosos (score >= 70%):
+
+1. [70%] Burger King (2x1)
+   [OLD] En Cono helado con QR o Tarjeta Visa Personal Pay
+   [NEW] En Combo Whopper Junior con QR o Tarjeta Visa Personal Pay
+
+2. [70%] Burger King (2x1)
+   [OLD] En Cono helado con QR o Tarjeta Visa Personal Pay
+   [NEW] En Combo King de Pollo con QR o Tarjeta Visa Personal Pay
+
+3. [70%] Burger King (2x1)
+   [OLD] En Combo Whopper Junior con QR o Tarjeta Visa Personal Pay
+   [NEW] En Combo King de Pollo con QR o Tarjeta Visa Personal Pay
+
+4. [70%] Burger King (30% OFF)
+   [OLD] En Combo Ensalada Caesar con QR o Tarjeta Visa Personal Pay
+   [NEW] En combo ensalada caesar. pag├í con 8% cualquier qr escaneado desde ...
+
+5. [70%] McDonald's (20% OFF)
+   [OLD] En McCombo Mediano Grand tasty Doble + Cup├│n
+   [NEW] En Ensalada Caesar con Cup├│n
+
+6. [70%] McDonald's (20% OFF)
+   [OLD] En McCombo Mediano Grand tasty Doble + Cup├│n
+   [NEW] En 2 conos con Cup├│n
+
+7. [70%] McDonald's (20% OFF)
+   [OLD] En McCombo Mediano Grand tasty Doble + Cup├│n
+   [NEW] En 2 cajitas felices con Cup├│n
+
+8. [70%] McDonald's (20% OFF)
+   [OLD] En Ensalada Caesar con Cup├│n
+   [NEW] En 2 conos con Cup├│n
+
+9. [70%] McDonald's (20% OFF)
+   [OLD] En Ensalada Caesar con Cup├│n
+   [NEW] En 2 cajitas felices con Cup├│n
+
+10. [70%] McDonald's (20% OFF)
+   [OLD] En 2 conos con Cup├│n
+   [NEW] En 2 cajitas felices con Cup├│n
+
+11. [70%] Mostaza (30% OFF)
+   [OLD] En Combo TR1 con Cup├│n
+   [NEW] En Tostado XL J&Q + Caf├® o Jugo con Cup├│n
+
+12. [70%] Mostaza (30% OFF)
+   [OLD] En Combo TR1 con Cup├│n
+   [NEW] En Big Bang Cheddar con Cup├│n
+
+13. [70%] Mostaza (30% OFF)
+   [OLD] En Tostado XL J&Q + Caf├® o Jugo con Cup├│n
+   [NEW] En Big Bang Cheddar con Cup├│n
+
+14. [70%] Wendy┬┤s (25% OFF)
+   [OLD] En Homestyle con Visa Personal Pay
+   [NEW] En Combo Dave┬┤s Simple con Visa Personal Pay
+
+15. [70%] Wendy┬┤s (20% OFF)
+   [OLD] En Capuchino Grande + Tostado con Visa Personal Pay
+   [NEW] En Capuchino Grande + Medialuna con Visa Personal Pay
+
