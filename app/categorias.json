@@ -1,0 +1,30 @@
+{
+  "desayuno_merienda": {
+    "label": "Desayuno/Merienda",
+    "icon": "coffee"
+  },
+  "comida": {
+    "label": "Comida",
+    "icon": "utensils"
+  },
+  "compras": {
+    "label": "Supermercados",
+    "icon": "shopping-cart"
+  },
+  "farmacia": {
+    "label": "Farmacia",
+    "icon": "pill"
+  },
+  "transporte": {
+    "label": "Transporte",
+    "icon": "bus"
+  },
+  "heladerias": {
+    "label": "Heladeria",
+    "icon": "ice-cream"
+  },
+  "facturas": {
+    "label": "Servicios",
+    "icon": "receipt"
+  }
+}
