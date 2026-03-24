@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PagaMenos - Data Processor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-dark: #07070a;
+            --bg-panel: #111116;
+            --accent-purple: #a064ff;
+            --accent-pink: #ff3b8f;
+            --accent-green: #37ffb4;
+            --text-main: #ffffff;
+            --text-muted: #8a8a9e;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .glow-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% -20%, rgba(55, 255, 180, 0.08), transparent 70%);
+            z-index: -1;
+        }
+
+        .dashboard {
+            width: 100%;
+            margin: 0;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+        }
+
+        header {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        main {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .upload-zone {
+            border: 2px dashed rgba(55, 255, 180, 0.2);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            background: rgba(55, 255, 180, 0.02);
+            display: block;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--accent-green);
+            background: rgba(55, 255, 180, 0.05);
+        }
+
+        .preview-step {
+            display: none;
+        }
+
+        .preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            display: block;
+            overflow-x: auto;
+        }
+
+        table {
+            font-size: 14px;
+            border-spacing: 0;
+            width: 100%;
+            border-collapse: separate;
+        }
+
+        th {
+            text-align: left;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        td {
+            padding: 22px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            vertical-align: middle;
+        }
+
+        .tag-type {
+            font-size: 10px;
+            font-weight: 900;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(55, 255, 180, 0.1);
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-type.db {
+            background: rgba(160, 100, 255, 0.1);
+            color: var(--accent-purple);
+            border: 1px solid rgba(160, 100, 255, 0.2);
+        }
+
+        .tag-mini {
+            font-size: 10px;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .tag-mini:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .tag-mini.purple {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        .tag-mini.gray {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tag-mini.green {
+            background: var(--accent-green);
+            color: #000;
+        }
+
+        .tag-mini.red {
+            background: #ff3b3b;
+            color: #fff;
+        }
+
+        .tag-mini.new-force {
+            background: var(--accent-green);
+            color: #000;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border-radius: 100px;
+            border: none;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-green {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+
+        .btn-green:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(55, 255, 180, 0.2);
+        }
+
+        .btn-green:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .side-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .stat-value {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--accent-green);
+        }
+
+        /* Chips y Tags */
+        .tag-type {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 900;
+            background: rgba(55, 255, 180, 0.1);
+            color: var(--accent-green);
+            display: inline-block;
+        }
+
+        .purple {
+            background: rgba(160, 100, 255, 0.1);
+            color: #a064ff;
+        }
+
+        .error {
+            background: rgba(255, 55, 55, 0.1);
+            color: #ff3737;
+        }
+
+        #log-area {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--accent-green);
+            opacity: 0.6;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Loader */
+        .loader {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--accent-green);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 30px auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Notificaciones Nativas */
+        #notification-success {
+            display: none;
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 700;
+            animation: slideUp 0.4s ease;
+        }
+
+        #error-display {
+            display: none;
+            background: rgba(255, 55, 55, 0.1);
+            color: #ff3737;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 55, 55, 0.2);
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 700;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Galería de Imágenes y Zoom */
+        .preview-content {
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .image-gallery {
+            position: sticky;
+            top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .img-container {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
+            cursor: crosshair;
+        }
+
+        .img-container img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+        }
+
+        .img-container:hover img {
+            transform: scale(2.5);
+        }
+
+        .img-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .upload-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* --- RESPONSIVE BACKEND --- */
+        @media (max-width: 1024px) {
+            body {
+                padding: 10px;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                margin-top: 20px;
+            }
+
+            .preview-content {
+                grid-template-columns: 1fr;
+            }
+
+            #save-btn {
+                min-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow-bg"></div>
+
+    <div class="dashboard">
+        <header>
+            <div class="logo">PAGA<span>MENOS</span>
+                <div class="tag-type">OCR ENGINE</div>
+            </div>
+            <div id="status-chip" class="tag-type">LOCAL OCR ACTIVE</div>
+        </header>
+
+        <main>
+            <!-- SUBIDA -->
+            <div id="upload-step">
+                <div class="upload-grid">
+                    <label for="file-input" class="upload-zone"
+                        style="height:100%; min-height:220px; transition:all 0.3s; cursor:pointer;">
+                        <i data-lucide="image-plus"
+                            style="width: 48px; height: 48px; color: var(--accent-green); margin-bottom: 20px;"></i>
+                        <h3>Subir Capturas</h3>
+                        <p style="color:var(--text-muted); font-size:13px; margin-top:8px;">Haz clic o arrastra imágenes
+                            de promociones y precios aquí.</p>
+                        <input type="file" id="file-input" multiple style="display:none;">
+                    </label>
+
+                    <div class="upload-zone"
+                        style="height:100%; min-height:220px; border-color:rgba(160,100,255,0.4); background:rgba(160,100,255,0.05); padding:20px; display:flex; flex-direction:column;">
+                        <div
+                            style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:15px;">
+                            <i data-lucide="file-text" style="width: 24px; height: 24px; color: #a064ff;"></i>
+                            <h3 style="color:#a064ff; font-size:16px;">Texto Plano</h3>
+                        </div>
+                        <textarea id="text-input"
+                            placeholder="O si lo prefieres, pega directamente el texto de la promo aquí..."
+                            style="flex:1; width:100%; min-height:100px; padding:15px; border-radius:12px; border:1px solid rgba(160,100,255,0.2); background:rgba(0,0,0,0.3); color:white; font-family:'Outfit',sans-serif; font-size:13px; resize:none; outline:none;"></textarea>
+                    </div>
+                </div>
+
+                <div id="log-area">Esperando archivos o texto plano...</div>
+                <div class="loader" id="loader"></div>
+
+                <div style="display:flex; justify-content:center;">
+                    <button id="extract-btn" class="btn btn-green" disabled style="margin-top:30px; min-width:300px;">
+                        <i data-lucide="zap" style="display:inline-block; vertical-align:middle; margin-right:8px;"></i>
+                        ANALIZAR DATOS
+                    </button>
+                </div>
+            </div>
+
+            <!-- PREVIA -->
+            <div id="preview-step" class="preview-step">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h2 style="font-weight:900; letter-spacing:-0.5px;">DATOS DETECTADOS</h2>
+                    <button class="tag-type" style="border:none; cursor:pointer;"
+                        onclick="location.reload()">CANCELAR</button>
+                </div>
+
+                <div class="preview-content" style="margin-top:30px;">
+                    <!-- Tabla -->
+                    <div class="data-section">
+                        <div class="preview-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>TIPO</th>
+                                        <th>COMERCIO</th>
+                                        <th>MEDIO</th>
+                                        <th>FORMA</th>
+                                        <th>DETALLE / PRODUCTO</th>
+                                        <th>VALOR</th>
+                                        <th>ACCIÓN</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="preview-body">
+                                    <!-- Dinámico -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="notification-success">
+                            <i data-lucide="check-circle"
+                                style="display:inline-block; vertical-align:middle; margin-right:8px;"></i>
+                            <span id="notification-text">¡Datos guardados con éxito!</span>
+                        </div>
+
+                        <div id="error-display"></div>
+
+                        <div
+                            style="margin-top:30px; padding:20px 25px; background:rgba(255,209,0,0.05); border-radius:20px; border:1px solid rgba(255,209,0,0.1); text-align:center;">
+                            <p style="font-size:15px; color:#FFD100; font-weight:800;">¿Los datos son correctos?</p>
+                            <p style="font-size:12px; color:rgba(255,255,255,0.6); margin-top:5px;">Al confirmar, los
+                                datos se fusionarán automáticamente con las bases de datos de PagaMenos App.</p>
+                        </div>
+
+                        <div style="display:flex; justify-content:center; margin-top:25px;">
+                            <button id="save-btn" class="btn btn-green"
+                                style="width:auto; min-width:300px; padding:15px 40px; font-size:14px;">
+                                <i data-lucide="database"
+                                    style="display:inline-block; vertical-align:middle; margin-right:8px;"></i>
+                                CONFIRMAR E INCORPORAR A LA APP
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Galería -->
+                    <div class="image-gallery" id="image-gallery">
+                        <!-- Figuras aquí -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="side-card">
+                <h4
+                    style="font-weight:800; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:10px;">
+                    ESTADO DE BASE</h4>
+                <div class="stat-item">
+                    <div class="stat-label">Precios</div>
+                    <div id="count-precios" class="stat-value">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Promociones</div>
+                    <div id="count-promos" class="stat-value">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Última Modificación</div>
+                    <div id="last-update" style="font-size:13px; font-weight:600; color:var(--text-muted);">Cargando...
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-card" style="background:rgba(55,255,180,0.02);">
+                <h4 style="font-weight:800; margin-bottom:10px;">ACCESO RÁPIDO</h4>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <button class="btn btn-outline" style="padding:12px; font-size:12px; border-color:#a064ff; color:#a064ff;"
+                        onclick="openCatEditor()">
+                        <i data-lucide="tags"></i> GESTIONAR CATEGORÍAS
+                    </button>
+                    <button class="btn btn-outline" style="padding:12px; font-size:12px; border-color:var(--accent-green); color:var(--accent-green);"
+                        onclick="openDbEditor()">
+                        <i data-lucide="database"></i> EDITAR BASE COMPLETA
+                    </button>
+                    <button class="btn btn-outline" style="padding:12px; font-size:12px;"
+                        onclick="window.open('../app/index.html', '_blank')">
+                        <i data-lucide="layout"></i> ABRIR APP MÓVIL
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- MODAL DE CATEGORIAS -->
+    <div id="cat-modal" style="display:none; position:fixed; inset:0; z-index:1100; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); padding:20px; overflow-y:auto;">
+        <div style="max-width:600px; margin:0 auto; background:var(--bg-panel); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:30px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+                <div>
+                    <h2 style="font-weight:900; letter-spacing:-0.5px;">📋 GESTIÓN DE CATEGORÍAS</h2>
+                    <p style="color:var(--text-muted); font-size:12px; margin-top:4px;">Editá, eliminá o agregá nuevas categorías. Se usan iconos de Lucide (ej: coffee, bus, home).</p>
+                </div>
+                <button onclick="closeCatEditor()" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:var(--text-muted); padding:10px 15px; border-radius:50px; font-weight:700; font-size:12px; cursor:pointer;">✕</button>
+            </div>
+            
+            <div id="cat-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+                <!-- Filas dinamicas -->
+            </div>
+            
+            <button onclick="addCatRow()" style="background:rgba(255,255,255,0.05); border:1px dashed rgba(255,255,255,0.2); color:white; width:100%; padding:14px; border-radius:12px; cursor:pointer; font-weight:800; font-size:12px; display:flex; justify-content:center; align-items:center; gap:8px;">
+                <i data-lucide="plus" style="width:14px;height:14px;"></i> AGREGAR CATEGORÍA NUEVA
+            </button>
+            
+            <div style="margin-top:25px; display:flex; justify-content:flex-end;">
+                <button id="cat-save-btn" onclick="saveCategories()" style="background:var(--accent-green); color:black; border:none; padding:12px 24px; border-radius:50px; font-weight:800; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                    <i data-lucide="save" style="width:14px;height:14px;"></i> GUARDAR CATEGORÍAS
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITOR DE BASE DE DATOS -->
+    <div id="db-modal" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); padding:20px; overflow-y:auto;">
+        <div style="max-width:1400px; margin:0 auto; background:var(--bg-panel); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:30px;">
+            <!-- Header del modal -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+                <div>
+                    <h2 style="font-weight:900; letter-spacing:-0.5px;">EDITOR DE BASE DE DATOS</h2>
+                    <p style="color:var(--text-muted); font-size:12px; margin-top:4px;">Editá directamente los campos. Los cambios se guardan al hacer clic en Guardar Todo.</p>
+                </div>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <button id="db-save-btn" onclick="saveDbChanges()" style="background:var(--accent-green); color:black; border:none; padding:12px 24px; border-radius:50px; font-weight:800; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="save" style="width:14px;height:14px;"></i> GUARDAR TODO
+                    </button>
+                    <button onclick="closeDbEditor()" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:var(--text-muted); padding:12px 20px; border-radius:50px; font-weight:700; font-size:13px; cursor:pointer;">✕ CERRAR</button>
+                </div>
+            </div>
+
+            <!-- Filtros del modal -->
+            <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+                <input id="db-search" type="text" placeholder="🔍 Buscar por comercio, detalle..." oninput="filterDbTable()" style="flex:1; min-width:200px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 15px; color:white; font-family:'Outfit',sans-serif; font-size:13px; outline:none;">
+                <select id="db-type-filter" onchange="filterDbTable()" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 15px; color:var(--text-muted); font-family:'Outfit',sans-serif; font-size:13px; outline:none;">
+                    <option value="all">Todos los tipos</option>
+                    <option value="promos">Solo Promos</option>
+                    <option value="precios">Solo Precios</option>
+                </select>
+                <select id="db-cat-filter" onchange="filterDbTable()" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 15px; color:var(--text-muted); font-family:'Outfit',sans-serif; font-size:13px; outline:none;">
+                    <option value="all">Todas las categorías</option>
+                </select>
+                <span id="db-count-label" style="align-self:center; font-size:12px; color:var(--text-muted); font-weight:700;"></span>
+            </div>
+
+            <!-- Tabla editble -->
+            <div style="overflow-x:auto; border-radius:16px; border:1px solid rgba(255,255,255,0.05);">
+                <table style="width:100%; border-collapse:collapse; font-size:13px;">
+                    <thead>
+                        <tr style="background:rgba(255,255,255,0.03);">
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800; white-space:nowrap;">TIPO</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">COMERCIO</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">CATEGORÍA</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">MEDIO PAGO</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">FORMA PAGO</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">DETALLE / PRODUCTO</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">VALOR</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">VIGENCIA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="db-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <style id="ux-improvements">
+        /* --- HIGH-END UI ENHANCEMENTS FOR TABLES & MODALS --- */
+
+        /* Category Manager Rows */
+        .cat-builder-row {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 12px !important;
+            transition: all 0.3s ease !important;
+        }
+        .cat-builder-row:hover {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-color: rgba(160, 100, 255, 0.4) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .cat-builder-row input {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid transparent !important;
+            transition: all 0.3s ease !important;
+            font-family: inherit;
+        }
+        .cat-builder-row input:focus {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border: 1px solid var(--accent-green) !important;
+            box-shadow: 0 0 0 3px rgba(55, 255, 180, 0.1) !important;
+        }
+        .cat-builder-row input[readonly] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .cat-builder-row button {
+            transition: all 0.2s ease;
+        }
+        .cat-builder-row button:hover {
+            transform: scale(1.15);
+            color: #ff5555 !important;
+            filter: drop-shadow(0 0 5px rgba(255,55,55,0.4));
+        }
+
+        /* Modern Tables (DB & Preview) */
+        table {
+            border-spacing: 0 2px;
+            border-collapse: separate !important;
+            width: 100%;
+        }
+        table thead tr th {
+            border-bottom: none !important;
+            background: transparent !important;
+            opacity: 0.8;
+            padding-bottom: 6px !important;
+        }
+        table tbody tr {
+            transition: all 0.2s cubic-bezier(0.1, 0.6, 0.4, 1);
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        table tbody tr td:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        table tbody tr td:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+            transform: scale(1.001);
+            box-shadow: 0 4px 10px rgba(160, 100, 255, 0.1);
+        }
+        table tbody tr[style*="border-bottom"] {
+            border-bottom: none !important;
+        }
+        
+        table td[contenteditable="true"] {
+            transition: all 0.2s ease;
+            cursor: text;
+        }
+        table td[contenteditable="true"]:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+        }
+        table td[contenteditable="true"]:focus {
+            background: rgba(0, 0, 0, 0.4) !important;
+            outline: none !important;
+            box-shadow: inset 0 0 0 1px var(--accent-green), 0 0 10px rgba(55, 255, 180, 0.1) !important;
+        }
+
+        /* Category Dropdowns in Tables */
+        .db-cat-btn {
+            transition: all 0.2s ease;
+        }
+        .db-cat-btn:hover {
+            border-color: rgba(55, 255, 180, 0.5) !important;
+            color: white !important;
+            background: rgba(255,255,255,0.08) !important;
+        }
+        .db-cat-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+        .db-cat-dropdown::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        .db-cat-dropdown::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .db-cat-dropdown::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <script>
+        lucide.createIcons();
+
+        const fileInput = document.getElementById('file-input');
+        const extractBtn = document.getElementById('extract-btn');
+        const uploadStep = document.getElementById('upload-step');
+        const previewStep = document.getElementById('preview-step');
+        const previewBody = document.getElementById('preview-body');
+        const saveBtn = document.getElementById('save-btn');
+        const loader = document.getElementById('loader');
+        const logArea = document.getElementById('log-area');
+
+        // --- Funciones Dinámicas de Categorías ---
+        let CAT_LABELS = {};
+        let CAT_ICON_HTML = {};
+        let CAT_RAW_DATA = {};
+        const ICON_STYLE = 'width:12px;height:12px;';
+
+        async function loadCategories() {
+            try {
+                const res = await fetch('/categories');
+                CAT_RAW_DATA = await res.json();
+                CAT_LABELS = {};
+                CAT_ICON_HTML = {};
+                for (const [k, v] of Object.entries(CAT_RAW_DATA)) {
+                    CAT_LABELS[k] = v.label;
+                    CAT_ICON_HTML[k] = `<i data-lucide="${v.icon}" style="${ICON_STYLE}"></i>`;
+                }
+                // Si la tabla de preview ya existe, forzar renderizado (para iconos)
+                if (extractedData.promos.length > 0) renderPreview(extractedData);
+            } catch(e) { console.error('Error cargando categorias', e); }
+        }
+        
+        loadCategories();
+
+        let extractedData = { precios: [], promos: [] };
+
+        async function refreshStats() {
+            try {
+                const res = await fetch('/status');
+                const data = await res.json();
+                document.getElementById('count-precios').innerText = data.countPrecios;
+                document.getElementById('count-promos').innerText = data.countPromos;
+                document.getElementById('last-update').innerText = data.lastUpdate;
+            } catch (e) { }
+        }
+
+        refreshStats();
+
+        const textInput = document.getElementById('text-input');
+
+        const checkInputs = () => {
+            if (fileInput.files.length > 0 || textInput.value.trim().length > 0) {
+                extractBtn.disabled = false;
+                logArea.innerText = `📎 ${fileInput.files.length} archivos | 📝 ${textInput.value.trim().length > 0 ? 'Texto detectado' : 'Sin texto'} (Pulsa Analizar)`;
+            } else {
+                extractBtn.disabled = true;
+                logArea.innerText = "Esperando archivos o texto plano...";
+            }
+        };
+
+        fileInput.addEventListener('change', checkInputs);
+        textInput.addEventListener('input', checkInputs);
+
+        extractBtn.addEventListener('click', async () => {
+            const files = fileInput.files;
+            const textContent = textInput.value.trim();
+            if (files.length === 0 && textContent.length === 0) return;
+
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);
+            }
+            if (textContent.length > 0) {
+                formData.append('rawText', textContent);
+            }
+
+            extractBtn.disabled = true;
+            loader.style.display = 'block';
+            logArea.innerText = "Reconociendo datos en tu PC local...";
+
+            try {
+                const res = await fetch('/upload', { method: 'POST', body: formData });
+                const data = await res.json();
+
+                if (data.error) throw new Error(data.error);
+
+                // Mostrar previsualización de imágenes y texto
+                const gallery = document.getElementById('image-gallery');
+                gallery.innerHTML = "";
+
+                if (textContent.length > 0) {
+                    const txtBox = document.createElement('div');
+                    txtBox.style.padding = '15px';
+                    txtBox.style.background = 'rgba(160,100,255,0.05)';
+                    txtBox.style.borderRadius = '12px';
+                    txtBox.style.border = '1px dashed rgba(160,100,255,0.3)';
+                    txtBox.style.color = 'var(--text-muted)';
+                    txtBox.style.fontSize = '12px';
+                    txtBox.style.fontStyle = 'italic';
+                    txtBox.innerText = `📌 Texto cargado: "${textContent}"`;
+                    gallery.appendChild(txtBox);
+                }
+
+                Array.from(files).forEach((file, idx) => {
+                    const container = document.createElement('div');
+                    container.className = "img-container";
+                    const label = document.createElement('div');
+                    label.className = "img-label";
+                    label.innerText = `ARCHIVO: ${file.name}`;
+
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+
+                    // Manejar zoom inteligente siguiendo el mouse
+                    container.addEventListener('mousemove', (e) => {
+                        const { left, top, width, height } = container.getBoundingClientRect();
+                        const x = ((e.pageX - left - window.scrollX) / width) * 100;
+                        const y = ((e.pageY - top - window.scrollY) / height) * 100;
+                        img.style.transformOrigin = `${x}% ${y}%`;
+                    });
+
+                    container.appendChild(img);
+                    gallery.appendChild(label);
+                    gallery.appendChild(container);
+                });
+
+                extractedData = data;
+                renderPreview(data);
+
+                loader.style.display = 'none';
+                uploadStep.style.display = 'none';
+                previewStep.style.display = 'block';
+            } catch (e) {
+                loader.style.display = 'none';
+                extractBtn.disabled = false;
+                const errBox = document.getElementById('error-display');
+                errBox.style.display = 'block';
+                errBox.innerText = "Error: " + e.message;
+            }
+        });
+
+        // --- Lógica del selector de categorías (delegada) ---
+        document.addEventListener('click', (e) => {
+            // Abrir/cerrar dropdown al hacer click en el botón
+            const btn = e.target.closest('.cat-selector-btn');
+            if (btn) {
+                const idx = btn.dataset.idx;
+                const dropdown = document.querySelector(`.cat-dropdown[data-idx="${idx}"]`);
+                // Cerrar todos los otros dropdowns
+                document.querySelectorAll('.cat-dropdown').forEach(d => {
+                    if (d !== dropdown) d.style.display = 'none';
+                });
+                dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+                return;
+            }
+
+            // Seleccionar categoría al hacer click en opción
+            const opt = e.target.closest('.cat-option');
+            if (opt) {
+                const idx = parseInt(opt.dataset.idx);
+                const key = opt.dataset.key;
+                // Actualizar dato interno
+                extractedData.promos[idx].categoria = key;
+                // Actualizar UI del botón
+                const wrap = document.querySelector(`.cat-selector-btn[data-idx="${idx}"]`);
+                if (wrap) {
+                    const iconHtml = CAT_ICON_HTML[key] || '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>';
+                    wrap.innerHTML = `${iconHtml}<span class="cat-label">${CAT_LABELS[key] || key}</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px;margin-left:auto;"><polyline points="6 9 12 15 18 9"/></svg>`;
+                    wrap.title = CAT_LABELS[key] || key;
+                }
+                // Cerrar dropdown
+                document.querySelectorAll('.cat-dropdown').forEach(d => d.style.display = 'none');
+                return;
+            }
+
+            // Cerrar todos si se hace click fuera
+            if (!e.target.closest('.cat-selector-wrap')) {
+                document.querySelectorAll('.cat-dropdown').forEach(d => d.style.display = 'none');
+            }
+        });
+
+        function renderPreview(data) {
+            const normalize = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+            previewBody.innerHTML = "";
+
+            const getBadge = (status) => {
+                if (status === 'identical') return `<span class="tag-mini" style="background:rgba(55,255,180,0.05); color:rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.1);">IDÉNTICO ✓</span>`;
+                if (status === 'new') return `<span class="tag-mini" style="background:rgba(55,255,180,0.1); color:var(--accent-green);">+ NUEVA</span>`;
+                return ``;
+            };
+
+            data.precios.forEach((p, idx) => {
+                const tr = document.createElement('tr');
+                if (p.status === 'identical') tr.style.opacity = "0.5";
+
+                const beforePrice = p.status === 'update' ? `<br><small style="color:var(--text-muted); font-size:10px; text-decoration:line-through;">Original: $${p.original.precio}</small>` : '';
+
+                tr.innerHTML = `
+                    <td><span class="tag-type" style="background:rgba(255,209,0,0.1); color:#FFD100; padding:6px 14px; border-radius:6px; letter-spacing:1px; font-weight:800; box-shadow:inset 0 0 0 1px rgba(255,209,0,0.2);">PRECIO</span></td>
+                    <td style="outline:none; vertical-align:middle;">
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <span contenteditable="true" data-type="precios" data-idx="${idx}" data-field="comercio" style="outline:none; cursor:text; min-width:20px;">${p.comercio}</span>
+                            <div contenteditable="false" style="display:inline-flex;">${getBadge(p.status, p.matchScore)}</div>
+                        </div>
+                    </td>
+                    <td><span style="color:rgba(255,255,255,0.1);">-</span></td>
+                    <td><span style="color:rgba(255,255,255,0.1);">-</span></td>
+                    <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="producto" style="outline:none; cursor:text;">${p.producto}</td>
+                    <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="precio" class="tag-price" style="outline:none; cursor:text; font-weight:900; color:${p.status === 'update' ? 'var(--accent-green)' : 'var(--text-main)'}; font-size:16px;">$${p.precio}${beforePrice}</td>
+                    <td><span style="color:rgba(255,255,255,0.1);">-</span></td>
+                `;
+                previewBody.appendChild(tr);
+            });
+
+            data.promos.forEach((p, idx) => {
+                const tr = document.createElement('tr');
+                tr.id = `row-promo-${idx}`;
+                if (p.status === 'identical') tr.style.opacity = "0.3";
+
+                // Color de fondo si es sospechoso
+                if (p.status === 'potential_duplicate' || p.status === 'update') {
+                    tr.style.background = p.status === 'update' ? "rgba(160, 100, 255, 0.05)" : "rgba(255,209,0,0.02)";
+                }
+
+                const renderActions = (p, idx) => {
+                    if (p.status === 'identical') return `<span style="color:var(--text-muted); font-size:10px;">IDÉNTICA ✓</span>`;
+
+                    if (p.isForcedNew) {
+                        return `<button class="tag-mini new-force" style="cursor:pointer;" onclick="setPromoStatus(${idx}, 'update')">✓ FORZADA NUEVA</button>
+                                 <br><a href="#" style="color:var(--text-muted); font-size:9px; margin-top:5px; display:inline-block;" onclick="setPromoStatus(${idx}, 'update')">revertir</a>`;
+                    }
+
+                    if (p.status === 'new') return `<span style="color:var(--accent-green); font-size:10px;">+ NUEVA</span>`;
+
+                    const consejo = p.matchScore >= 90 ? "Parecido extremo (Recomendado)" : "Parecido alto (Verificar)";
+                    const adviceIcon = p.matchScore >= 90 ? "check-circle" : "info";
+
+                    const isHighlyRecommended = p.matchScore >= 90;
+
+                    return `
+                        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+                            <button class="tag-mini" 
+                                    style="background:#a064ff; color:white; border:${isHighlyRecommended ? '2px solid rgba(255,255,255,0.8)' : 'none'}; cursor:pointer; padding:8px 10px; border-radius:6px; font-size:10px; font-weight:800; width:110px; box-shadow:0 4px 10px rgba(160,100,255,0.2); display:flex; align-items:center; justify-content:center; gap:5px;" 
+                                    onclick="setPromoStatus(${idx}, 'update')">
+                                <i data-lucide="${isHighlyRecommended ? 'check-circle-2' : 'refresh-cw'}" style="width:12px; height:12px;"></i> ACTUALIZAR
+                            </button>
+                            <button class="tag-mini" 
+                                    style="background:var(--accent-green); color:black; border:none; cursor:pointer; padding:8px 10px; border-radius:6px; font-size:10px; font-weight:800; width:110px; box-shadow:0 4px 10px rgba(55,255,180,0.2); display:flex; align-items:center; justify-content:center; gap:5px;" 
+                                    onclick="setPromoStatus(${idx}, 'new')">
+                                <i data-lucide="plus" style="width:12px; height:12px;"></i> ES NUEVA
+                            </button>
+                            <button class="tag-mini" 
+                                    style="background:#ff3737; color:white; border:none; cursor:pointer; padding:8px 10px; border-radius:6px; font-size:10px; font-weight:800; width:110px; box-shadow:0 4px 10px rgba(255,55,55,0.2); display:flex; align-items:center; justify-content:center; gap:5px;" 
+                                    onclick="removeRow(${idx})">
+                                <i data-lucide="x" style="width:12px; height:12px;"></i> DESCARTAR
+                            </button>
+                        </div>
+                    `;
+
+                };
+
+                const diffSpan = (val, orgVal, isDetail = false) => {
+                    if (!orgVal || p.isForcedNew) return '';
+                    const isDiff = normalize(val) !== normalize(orgVal);
+                    const color = isDiff ? '#ff3737' : 'rgba(255,255,255,0.5)';
+                    const bg = isDiff ? 'rgba(255,55,55,0.05)' : 'rgba(160, 100, 255, 0.05)';
+                    const border = isDiff ? 'rgba(255,55,55,0.2)' : 'rgba(160, 100, 255, 0.2)';
+
+                    return `
+                        <div style="margin-top:8px; padding:6px 10px; background:${bg}; border-radius:10px; border:1px solid ${border}; font-size:10px; line-height:1.2; display:block;">
+                            <span style="display:flex; align-items:center; gap:5px; color:${color};">
+                                <i data-lucide="database-backup" style="width:10px; height:10px; opacity:0.7;"></i>
+                                <span style="font-size:9px; font-weight:800; opacity:0.5; margin-right:5px;">DB:</span>
+                                <b>${orgVal}</b>
+                            </span>
+                        </div>
+                    `;
+                };
+
+                tr.innerHTML = `
+                    <td style="vertical-align:middle;">
+                        <span class="tag-type" style="background:rgba(55,255,180,0.08); color:var(--accent-green); padding:6px 14px; border-radius:6px; letter-spacing:1px; font-weight:800; box-shadow:inset 0 0 0 1px rgba(55,255,180,0.2);">PROMO</span>
+                    </td>
+                    <td style="outline:none; vertical-align:middle;">
+                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                            <span contenteditable="true" data-type="promos" data-idx="${idx}" data-field="comercio" style="outline:none; cursor:text; min-width:20px;">${p.comercio}</span>
+                            <div contenteditable="false" style="display:inline-flex;">${getBadge(p.status, p.matchScore)}</div>
+                        </div>
+                        <div class="cat-selector-wrap" style="position:relative;">
+                            <button class="cat-selector-btn" data-idx="${idx}" title="${p.categoria || 'Categoría'}" 
+                                style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:4px 8px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; color:var(--text-muted); font-size:10px; font-weight:700; white-space:nowrap;">
+                                ${CAT_ICON_HTML[p.categoria] || '<i data-lucide="tag" style="width:12px;height:12px;"></i>'}
+                                <span class="cat-label">${CAT_LABELS[p.categoria] || (p.categoria || 'Categoría')}</span>
+                                <i data-lucide="chevron-down" style="width:10px;height:10px; margin-left:2px;"></i>
+                            </button>
+                            <div class="cat-dropdown" data-idx="${idx}" style="display:none; position:absolute; top:110%; left:0; z-index:100; background:var(--bg-panel); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:6px; min-width:160px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+                                ${Object.entries(CAT_LABELS).map(([key, label]) => `
+                                    <div class="cat-option" data-key="${key}" data-idx="${idx}" 
+                                        style="display:flex; align-items:center; gap:8px; padding:7px 10px; border-radius:6px; cursor:pointer; font-size:11px; font-weight:700; color:var(--text-muted); transition:all 0.15s;"
+                                        onmouseover="this.style.background='rgba(255,255,255,0.06)'" 
+                                        onmouseout="this.style.background='transparent'">
+                                        ${CAT_ICON_HTML[key] || '<i data-lucide="tag" style="width:12px;height:12px;"></i>'}
+                                        ${label}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </td>
+                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="medio_pago" style="outline:none; color:#a064ff;">
+                        ${p.medio_pago}
+                    </td>
+                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="forma_pago" style="outline:none; color:var(--text-muted);">
+                        ${p.forma_pago || 'QR/Tarjeta'}
+                    </td>
+                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="detalle" style="outline:none; line-height:1.4;">
+                        ${p.detalle}
+                    </td>
+                    <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="descuento" style="outline:none; font-weight:900; color:var(--accent-pink); font-size:16px; letter-spacing:-0.5px;">
+                        ${p.descuento}
+                    </td>
+                    <td>${renderActions(p, idx)}</td>
+                `;
+
+                previewBody.appendChild(tr);
+
+                // Fila de comparación (Alineada por columnas dentro de un recuadro)
+                if (p.original && !p.isForcedNew) {
+                    const isDiff = (f) => normalize(p[f]) !== normalize(p.original[f]);
+                    const color = (f) => isDiff(f) ? '#ff3737' : 'rgba(255,255,255,0.7)';
+                    const consejo = p.matchScore >= 90 ? "Parecido extremo (Recomendado)" : "Parecido alto (Verificar)";
+                    const iconColor = p.status === 'update' ? '#a064ff' : '#FFD100';
+
+                    // 1. Fila de Título (Sin padding lateral en el TD para alinear el DIV con los bordes de la fila inferior)
+                    const trTitle = document.createElement('tr');
+                    trTitle.innerHTML = `
+                        <td colspan="7" style="padding:15px 0 0 0; border:none; background:transparent;">
+                            <div style="background:rgba(160, 100, 255, 0.05); border:1px solid rgba(160, 100, 255, 0.2); border-bottom:none; border-radius:12px 12px 0 0; padding:12px 20px; display:flex; align-items:center; gap:10px; margin-bottom:-1px; border-left:none; border-right:none;">
+                                <i data-lucide="database" style="width:14px; height:14px; color:var(--text-main);"></i>
+                                <span style="font-weight:900; letter-spacing:1px; font-size:10px; color:var(--text-main); text-transform:uppercase;">EN BASE DE DATOS (COMPARATIVA)</span>
+                            </div>
+                        </td>
+                    `;
+                    previewBody.appendChild(trTitle);
+
+                    // 2. Fila de Datos (Sin bordes redondeados raros, alineada a los bordes de la tabla)
+                    const trData = document.createElement('tr');
+                    trData.innerHTML = `
+                        <td style="background:rgba(160, 100, 255, 0.05); border-left:1px solid rgba(160, 100, 255, 0.2); border-bottom:1px solid rgba(160, 100, 255, 0.2); border-radius:0 0 0 12px; padding:15px 20px;">
+                            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(160, 100, 255, 0.15); border:1px solid rgba(160, 100, 255, 0.3); padding:8px; border-radius:8px; width:fit-content; gap:4px;">
+                                <i data-lucide="database-backup" style="width:12px; height:12px; color:#a064ff;"></i>
+                                <span style="font-size:9px; font-weight:900; color:#a064ff; text-transform:uppercase; letter-spacing:1px;">BASE</span>
+                            </div>
+                        </td>
+                        <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
+                            <span style="color:${color('comercio')}">${p.original.comercio}</span>
+                        </td>
+                        <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
+                            <span style="color:${color('medio_pago')}">${p.original.medio_pago}</span>
+                        </td>
+                        <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
+                            <span style="color:${color('forma_pago')}">${p.original.forma_pago || 'QR/Tarjeta'}</span>
+                        </td>
+                        <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
+                            <span style="color:${color('detalle')}; font-style:italic; opacity:0.8;">${p.original.detalle}</span>
+                        </td>
+                        <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
+                            <span style="font-weight:900; color:${color('descuento')}; font-size:16px;">${p.original.descuento}</span>
+                        </td>
+                        <td style="background:rgba(160, 100, 255, 0.05); border-right:1px solid rgba(160, 100, 255, 0.2); border-bottom:1px solid rgba(160, 100, 255, 0.2); border-radius:0 0 12px 0; text-align:center; padding:15px 20px;">
+                            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:help;" title="${p.matchScore}% de coincidencia. ${consejo}">
+                                <i data-lucide="info" style="width:16px; height:16px; color:${iconColor}; stroke-width:3px; margin-bottom:6px;"></i>
+                                <span style="font-size:15px; color:#a064ff; font-weight:900; line-height:1;">${p.matchScore}%</span>
+                                <span style="font-size:10px; color:#a064ff; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">PARECIDO</span>
+                            </div>
+                        </td>
+                    `;
+                    previewBody.appendChild(trData);
+                }
+            });
+
+            lucide.createIcons();
+
+            if (data.precios.length === 0 && data.promos.length === 0) {
+                previewBody.innerHTML = "<tr><td colspan='7' style='text-align:center; padding:40px; color:var(--text-muted);'>No se detectaron datos relevantes en las imágenes.</td></tr>";
+            }
+        }
+
+        // Función para descartar fila
+        window.removeRow = (idx) => {
+            extractedData.promos.splice(idx, 1);
+            renderPreview(extractedData);
+        };
+
+        // Función para cambiar el estado de una promo manualmente
+        window.setPromoStatus = (idx, newStatus) => {
+            extractedData.promos[idx].status = newStatus;
+
+            if (newStatus === 'new') {
+                extractedData.promos[idx].isForcedNew = true;
+            } else {
+                extractedData.promos[idx].isForcedNew = false;
+            }
+
+            renderPreview(extractedData);
+        };
+
+        // Listener para edición en vivo mejorado para spans internos
+        previewBody.addEventListener('input', (e) => {
+            const el = e.target;
+            const targetEl = el.closest('[contenteditable="true"]');
+            if (targetEl && targetEl.hasAttribute('data-type')) {
+                const type = targetEl.getAttribute('data-type');
+                const idx = parseInt(targetEl.getAttribute('data-idx'));
+                const field = targetEl.getAttribute('data-field');
+                let val = targetEl.innerText.trim();
+                if (val.startsWith('$')) val = val.slice(1);
+                extractedData[type][idx][field] = val;
+            }
+        });
+
+        saveBtn.addEventListener('click', async () => {
+            saveBtn.disabled = true;
+            try {
+                const res = await fetch('/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(extractedData)
+                });
+                const result = await res.json();
+
+                const notif = document.getElementById('notification-success');
+                const notifText = document.getElementById('notification-text');
+                notif.style.display = 'block';
+                notifText.innerText = result.message || "¡Datos guardados con éxito!";
+
+                setTimeout(() => {
+                    location.reload();
+                }, 2500);
+            } catch (e) {
+                saveBtn.disabled = false;
+                const errBox = document.getElementById('error-display');
+                errBox.style.display = 'block';
+                errBox.innerText = "Error al guardar: " + e.message;
+            }
+        });
+
+        // --- LÓGICA DEL EDITOR DE BASE DE DATOS ---
+        let fullDbData = { promos: [], precios: [] };
+
+        // Modal Editor de Categorias
+        function renderCatList() {
+            const list = document.getElementById('cat-list');
+            list.innerHTML = '';
+            for (const [key, data] of Object.entries(CAT_RAW_DATA)) {
+                list.insertAdjacentHTML('beforeend', `
+                    <div class="cat-builder-row" style="display:flex; gap:10px; align-items:center; background:rgba(255,255,255,0.03); padding:10px; border-radius:10px;">
+                        <input type="text" class="cat-key" value="${key}" placeholder="ID (ej: comida)" style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:8px; color:white; font-size:12px; outline:none;" ${key==='' ? '' : 'readonly title="El ID de categoría no de puede cambiar una vez creado"'}>
+                        <input type="text" class="cat-label" value="${data.label}" placeholder="Etiqueta / Nombre Visible" style="flex:2; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:8px; color:white; font-size:12px; outline:none;">
+                        <input type="text" class="cat-icon" value="${data.icon}" placeholder="Lucide icon" style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:8px; color:white; font-size:12px; outline:none;">
+                        <button onclick="this.parentElement.remove()" style="background:transparent; border:none; color:#ff3737; cursor:pointer; padding:5px;"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
+                    </div>
+                `);
+            }
+            lucide.createIcons();
+        }
+
+        function openCatEditor() {
+            document.getElementById('cat-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            renderCatList();
+        }
+
+        function closeCatEditor() {
+            document.getElementById('cat-modal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function addCatRow() {
+            CAT_RAW_DATA[''] = {label: '', icon: 'tag'};
+            renderCatList();
+        }
+
+        async function saveCategories() {
+            const btn = document.getElementById('cat-save-btn');
+            const og = btn.innerHTML;
+            btn.innerHTML = 'GUARDANDO...';
+            btn.disabled = true;
+
+            try {
+                const rows = document.querySelectorAll('.cat-builder-row');
+                const newData = {};
+                rows.forEach(r => {
+                    let k = r.querySelector('.cat-key').value.trim();
+                    if (!k) k = 'cat_' + Date.now();
+                    k = k.toLowerCase().replace(/[^a-z0-9_]/g, ''); // slugify ID
+                    
+                    const l = r.querySelector('.cat-label').value.trim() || k;
+                    const i = r.querySelector('.cat-icon').value.trim() || 'tag';
+                    newData[k] = { label: l, icon: i };
+                });
+
+                const res = await fetch('/categories', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newData)
+                });
+                
+                if (!res.ok) throw new Error("Error en servidor");
+                btn.innerHTML = '¡GUARDADO!';
+                btn.style.background = '#28a745';
+                
+                await loadCategories(); // recarga la memoria JS local
+                
+                setTimeout(() => {
+                    btn.innerHTML = og;
+                    btn.style.background = 'var(--accent-green)';
+                    btn.disabled = false;
+                    closeCatEditor();
+                }, 1500);
+            } catch (e) {
+                alert("Error: " + e.message);
+                btn.innerHTML = og;
+                btn.disabled = false;
+            }
+        }
+
+        async function openDbEditor() {
+            const modal = document.getElementById('db-modal');
+            const tbody = document.getElementById('db-table-body');
+            
+            tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:40px; color:var(--text-muted);">Cargando base de datos... </td></tr>';
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; 
+            
+            try {
+                const res = await fetch('/db');
+                fullDbData = await res.json();
+                
+                const catFilter = document.getElementById('db-cat-filter');
+                catFilter.innerHTML = '<option value="all">Todas las categorías</option>';
+                const uniqueCats = [...new Set(fullDbData.promos.map(p => p.categoria).filter(Boolean))];
+                uniqueCats.forEach(cat => {
+                    const opt = document.createElement('option');
+                    opt.value = cat;
+                    opt.textContent = CAT_LABELS[cat] || cat;
+                    catFilter.appendChild(opt);
+                });
+
+                renderDbTable();
+            } catch (e) {
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:40px; color:#ff3737;">Error al cargar la base de datos: ${e.message}</td></tr>`;
+            }
+        }
+
+        function closeDbEditor() {
+            document.getElementById('db-modal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function filterDbTable() {
+            renderDbTable();
+        }
+
+        function renderDbTable() {
+            const tbody = document.getElementById('db-table-body');
+            const searchVal = document.getElementById('db-search').value.toLowerCase();
+            const typeFilter = document.getElementById('db-type-filter').value;
+            const catFilter = document.getElementById('db-cat-filter').value;
+            
+            tbody.innerHTML = '';
+            let count = 0;
+
+            const renderRows = (type, items) => {
+                items.forEach((item, idx) => {
+                    if (typeFilter !== 'all' && typeFilter !== type) return;
+                    if (type === 'promos' && catFilter !== 'all' && item.categoria !== catFilter) return;
+                    
+                    const searchStr = Object.values(item).join(' ').toLowerCase();
+                    if (searchVal && !searchStr.includes(searchVal)) return;
+
+                    count++;
+                    const tr = document.createElement('tr');
+                    tr.style.borderBottom = '1px solid rgba(255,255,255,0.02)';
+                    
+                    if (type === 'promos') {
+                        tr.innerHTML = `
+                            <td style="padding:16px 14px; vertical-align:middle; width:80px;">
+                                <span style="background:rgba(55,255,180,0.08); color:var(--accent-green); padding:4px 8px; border-radius:4px; font-size:10px; font-weight:800;">PROMO</span>
+                            </td>
+                            <td style="padding:16px 14px; outline:none; font-size:13px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="comercio">${item.comercio || ''}</td>
+                            <td style="padding:16px 14px;">
+                                <div class="db-cat-wrap" style="position:relative; display:inline-block;">
+                                    <button class="db-cat-btn" data-idx="${idx}" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:6px 10px; cursor:pointer; color:var(--text-muted); font-size:11px; font-weight:700; display:flex; align-items:center; gap:5px; white-space:nowrap;">
+                                        ${CAT_ICON_HTML[item.categoria] || '<i data-lucide="tag" style="width:12px;height:12px;"></i>'}
+                                        <span>${CAT_LABELS[item.categoria] || item.categoria || 'Sin Categoría'}</span>
+                                    </button>
+                                    <div class="db-cat-dropdown" data-idx="${idx}" style="display:none; position:absolute; top:110%; left:0; z-index:100; background:var(--bg-panel); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:4px; min-width:140px; box-shadow:0 10px 30px rgba(0,0,0,0.5); max-height:250px; overflow-y:auto;">
+                                        ${Object.entries(CAT_LABELS).map(([key, label]) => `
+                                            <div class="db-cat-option" data-key="${key}" data-idx="${idx}" style="padding:8px 10px; font-size:12px; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; gap:6px; border-radius:4px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                                                ${CAT_ICON_HTML[key] || '<i data-lucide="tag" style="width:12px;height:12px;"></i>'} ${label}
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding:16px 14px; outline:none; color:#a064ff; font-size:12px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="medio_pago">${item.medio_pago || ''}</td>
+                            <td style="padding:16px 14px; outline:none; font-size:12px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="forma_pago">${item.forma_pago || ''}</td>
+                            <td style="padding:16px 14px; outline:none; line-height:1.4; max-width:300px; font-size:12px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="detalle">${item.detalle || ''}</td>
+                            <td style="padding:16px 14px; outline:none; font-weight:900; color:var(--accent-pink); font-size:14px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="descuento">${item.descuento || ''}</td>
+                            <td style="padding:16px 14px; outline:none; font-size:11px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="vigencia">${item.vigencia || ''}</td>
+                        `;
+                    } else {
+                        tr.innerHTML = `
+                            <td style="padding:14px 12px; vertical-align:middle;">
+                                <span style="background:rgba(255,160,50,0.08); color:orange; padding:4px 8px; border-radius:4px; font-size:9px; font-weight:800;">PRECIO</span>
+                            </td>
+                            <td style="padding:14px 12px; outline:none;" contenteditable="true" data-dbtype="precios" data-dbidx="${idx}" data-dbfield="comercio">${item.comercio || ''}</td>
+                            <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
+                            <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
+                            <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
+                            <td style="padding:14px 12px; outline:none;" contenteditable="true" data-dbtype="precios" data-dbidx="${idx}" data-dbfield="producto">${item.producto || ''}</td>
+                            <td style="padding:14px 12px; outline:none; font-weight:900;" contenteditable="true" data-dbtype="precios" data-dbidx="${idx}" data-dbfield="precio">${item.precio || ''}</td>
+                            <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
+                        `;
+                    }
+                    tbody.appendChild(tr);
+                });
+            };
+
+            renderRows('promos', fullDbData.promos);
+            renderRows('precios', fullDbData.precios);
+            
+            document.getElementById('db-count-label').innerText = count + " registros";
+        }
+
+        // Listener para edición en DB
+        document.getElementById('db-table-body').addEventListener('input', (e) => {
+            const el = e.target;
+            if (el.hasAttribute('data-dbtype')) {
+                const type = el.getAttribute('data-dbtype');
+                const idx = parseInt(el.getAttribute('data-dbidx'));
+                const field = el.getAttribute('data-dbfield');
+                fullDbData[type][idx][field] = el.innerText.trim();
+            }
+        });
+
+        // Selector delegado DB
+        document.addEventListener('click', (e) => {
+            const dbBtn = e.target.closest('.db-cat-btn');
+            if (dbBtn) {
+                const dropdown = dbBtn.nextElementSibling;
+                const isVis = dropdown.style.display === 'block';
+                
+                document.querySelectorAll('table tbody tr').forEach(r => { r.style.position = ''; r.style.zIndex = ''; });
+                document.querySelectorAll('.db-cat-dropdown').forEach(d => d.style.display = 'none');
+                
+                if (!isVis) {
+                    dropdown.style.display = 'block';
+                    const tr = dbBtn.closest('tr');
+                    if (tr) {
+                        tr.style.position = 'relative';
+                        tr.style.zIndex = '9999';
+                    }
+                }
+                return;
+            }
+
+            const dbOpt = e.target.closest('.db-cat-option');
+            if (dbOpt) {
+                const idx = parseInt(dbOpt.dataset.idx);
+                const key = dbOpt.dataset.key;
+                fullDbData.promos[idx].categoria = key;
+                
+                const btn = dbOpt.closest('.db-cat-wrap').querySelector('.db-cat-btn');
+                btn.innerHTML = `${CAT_ICON_HTML[key]} <span>${CAT_LABELS[key] || key}</span>`;
+                
+                const tr = dbOpt.closest('tr');
+                if (tr) { tr.style.position = ''; tr.style.zIndex = ''; }
+                document.querySelectorAll('.db-cat-dropdown').forEach(d => d.style.display = 'none');
+                return;
+            }
+
+            if (!e.target.closest('.db-cat-wrap')) {
+                document.querySelectorAll('table tbody tr').forEach(r => { r.style.position = ''; r.style.zIndex = ''; });
+                document.querySelectorAll('.db-cat-dropdown').forEach(d => d.style.display = 'none');
+            }
+        });
+
+        async function saveDbChanges() {
+            const btn = document.getElementById('db-save-btn');
+            const og = btn.innerHTML;
+            btn.innerHTML = 'GUARDANDO...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/db', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(fullDbData)
+                });
+                
+                if (!res.ok) throw new Error("Error en servidor");
+                btn.innerHTML = '¡GUARDADO!';
+                btn.style.background = '#28a745';
+                
+                if(typeof refreshStats === 'function') refreshStats();
+                
+                setTimeout(() => {
+                    btn.innerHTML = og;
+                    btn.style.background = 'var(--accent-green)';
+                    btn.disabled = false;
+                }, 2000);
+            } catch (e) {
+                alert("Error: " + e.message);
+                btn.innerHTML = og;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
