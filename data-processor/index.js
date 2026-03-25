@@ -32,8 +32,37 @@ app.get("/db", (req, res) => {
 
 app.post("/db", (req, res) => {
   const { precios, promos } = req.body;
-  if (precios) fs.writeFileSync(preciosPath, JSON.stringify(precios, null, 2));
-  if (promos) fs.writeFileSync(promosPath, JSON.stringify(promos, null, 2));
+  const ahora = new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false });
+
+  if (precios) {
+    const existentes = fs.existsSync(preciosPath) ? JSON.parse(fs.readFileSync(preciosPath, "utf8")) : [];
+    const conFecha = precios.map((nuevo, i) => {
+      const viejo = existentes[i];
+      const cambio = !viejo || viejo.comercio !== nuevo.comercio || viejo.precio !== nuevo.precio;
+      // Marcar fecha si cambió, o migrar si nunca tuvo fecha
+      if (cambio || !nuevo.fecha_modificacion) nuevo.fecha_modificacion = ahora;
+      return nuevo;
+    });
+    fs.writeFileSync(preciosPath, JSON.stringify(conFecha, null, 2));
+  }
+
+  if (promos) {
+    const existentes = fs.existsSync(promosPath) ? JSON.parse(fs.readFileSync(promosPath, "utf8")) : [];
+    const conFecha = promos.map((nuevo, i) => {
+      const viejo = existentes[i];
+      const cambio = !viejo ||
+        viejo.comercio !== nuevo.comercio ||
+        viejo.descuento !== nuevo.descuento ||
+        viejo.detalle !== nuevo.detalle ||
+        viejo.vigencia !== nuevo.vigencia ||
+        JSON.stringify(viejo.dias) !== JSON.stringify(nuevo.dias);
+      // Marcar fecha si cambió, o migrar si nunca tuvo fecha
+      if (cambio || !nuevo.fecha_modificacion) nuevo.fecha_modificacion = ahora;
+      return nuevo;
+    });
+    fs.writeFileSync(promosPath, JSON.stringify(conFecha, null, 2));
+  }
+
   res.json({ success: true });
 });
 

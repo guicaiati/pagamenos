@@ -128,31 +128,60 @@ export function logicExtract(text) {
       detalle = "Beneficio exclusivo. Consultar detalle en local.";
   }
 
-    // 7. Identificar Días
-    let diasRaw = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
-    let diasDetectados = [];
+    // 7. Identificar Días (Lunes=0, Martes=1, ..., Domingo=6) - VERSIÓN ULTRA ROBUSTA
+    console.log("--- TEXTO PROCESADO PARA DÍAS ---");
+    console.log(normalized); // Ver qué lee exactamente Tesseract
     
-    if (normalized.includes("todos los d") || normalized.includes("diariamente")) {
-        diasDetectados = diasRaw;
+    let diasIndices = [];
+    const normalizedNoAccents = normalized.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // "días" -> "dias"
+    
+    // RegEx ultra flexible para "Todos los d[ií]as" (acepta errores de OCR como I en lugar de l)
+    // Coincide con: "todos los dias", "todos los dìas", "todos los d I as", "todos los d1as", etc.
+    const regexTodos = /(todos\s+los\s+d[iíIILl1\s]+as|diariamente|diario|toda\s+la\s+semana|lunes\s+a\s+domingo|l-d|l\s+a\s+d)/i;
+    const regexHabiles = /(lunes\s+a\s+viernes|d[ií]as\s+h[aá]biles|l-v|l\s+a\s+v)/i;
+    const regexHabilesSab = /(lunes\s+a\s+s[aá]bado|l-s|l\s+a\s+s)/i;
+    const regexFinde = /(fin\s+de\s+semana|fines\s+de\s+semana|s[aá]bado\s+y\s+domingo|s\s+y\s+d|s-d)/i;
+
+    if (regexTodos.test(normalized)) {
+        console.log("Detectado: Todos los días");
+        diasIndices = [0, 1, 2, 3, 4, 5, 6];
+    } else if (regexHabiles.test(normalized)) {
+        console.log("Detectado: Lunes a Viernes");
+        diasIndices = [0, 1, 2, 3, 4];
+    } else if (regexHabilesSab.test(normalized)) {
+        console.log("Detectado: Lunes a Sábado");
+        diasIndices = [0, 1, 2, 3, 4, 5];
+    } else if (regexFinde.test(normalized)) {
+        console.log("Detectado: Fin de semana");
+        diasIndices = [5, 6];
     } else {
-        diasRaw.forEach(d => {
-            if (normalized.includes(d)) diasDetectados.push(d);
+        // Individuales
+        const diasTexto = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+        diasTexto.forEach((d, i) => {
+            const pattern = new RegExp(d.normalize("NFD").replace(/[\u0300-\u036f]/g, ""), "i");
+            if (pattern.test(normalizedNoAccents)) {
+                diasIndices.push(i);
+            }
         });
-        if (diasDetectados.length === 0) {
-            diasDetectados = ["lunes", "martes", "miercoles", "jueves", "viernes"]; // Default razonable
+        
+        // Sugerencia base si no hay nada
+        if (diasIndices.length === 0) {
+            diasIndices = [0, 1, 2, 3, 4]; // L-V por defecto
         }
     }
+    console.log("Índices calculados:", diasIndices);
 
     result.promos.push({
       comercio: comercio,
       medio_pago: medioPago,
       categoria: categoria,
       descuento: valorStr,
-      tipo_beneficio: (valorStr === "GRATIS" || nxmMatch) ? "Promo" : "Descuento",
-      tags: ["promocion", comercio.toLowerCase(), categoria],
-      dias: diasDetectados,
       detalle: detalle,
       vigencia: vigenciaStr,
+      dias: diasIndices, 
+      status: "new",
+      tipo_beneficio: (valorStr === "GRATIS" || nxmMatch) ? "Promo" : "Descuento",
+      tags: ["promocion", comercio.toLowerCase(), categoria],
       forma_pago: "QR/Tarjeta" 
     });
 

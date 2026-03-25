@@ -2,27 +2,32 @@
   {
     "comercio": "Burger King",
     "producto": "Combo Whopper Junior",
-    "precio": 12500
+    "precio": 12500,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Burger King",
     "producto": "Combo King de Pollo",
-    "precio": 18200
+    "precio": 18200,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Burger King",
     "producto": "Combo Cuarto XL",
-    "precio": 19800
+    "precio": 19800,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Burger King",
     "producto": "Combo Ensalada Caesar",
-    "precio": 9500
+    "precio": 9500,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Burger King",
     "producto": "Combo Tostado J&Q + Café",
-    "precio": 7400
+    "precio": 7400,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "McDonald's",
@@ -45,42 +50,50 @@
   {
     "comercio": "Mostaza",
     "producto": "Combo TR1",
-    "precio": 13600
+    "precio": 13600,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Mostaza",
     "producto": "Big Bang Cheddar",
-    "precio": 18700
+    "precio": 18700,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Mostaza",
     "producto": "Pollo Crispy",
-    "precio": 15900
+    "precio": 15900,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Mostaza",
     "producto": "Tostado XL J&Q + Café o Jugo",
-    "precio": 8200
+    "precio": 8200,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Wendy´s",
     "producto": "Homestyle",
-    "precio": 17800
+    "precio": 17800,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Wendy´s",
     "producto": "Combo Dave´s Simple",
-    "precio": 16200
+    "precio": 16200,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Wendy´s",
     "producto": "Capuchino Grande + Tostado",
-    "precio": 7200
+    "precio": 7200,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Wendy´s",
     "producto": "Capuchino Grande + Medialuna",
-    "precio": 5400
+    "precio": 5400,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Milanga",
@@ -91,21 +104,25 @@
   {
     "comercio": "Starbucks",
     "producto": "Mocha Latte/Frappuccino",
-    "precio": 9500
+    "precio": 9500,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Solo Empanadas",
     "producto": "Docena de Empanadas",
-    "precio": 16800
+    "precio": 16800,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Colectivos",
     "producto": "Pasaje de Colectivo (AMBA)",
-    "precio": 700
+    "precio": 700,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Subte",
     "producto": "Viaje en Subte",
-    "precio": 1363
+    "precio": 1363,
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   }
 ]

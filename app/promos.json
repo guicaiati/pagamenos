@@ -24,7 +24,8 @@
     "detalle": "En Cono helado con QR o Tarjeta Visa Personal Pay",
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "burgerking-personalpay-enconoheladocon"
+    "slug": "burgerking-personalpay-enconoheladocon",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -51,7 +52,8 @@
     "detalle": "En Combo Whopper Junior con QR o Tarjeta Visa Personal Pay",
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "burgerking-personalpay-encombowhopperj"
+    "slug": "burgerking-personalpay-encombowhopperj",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -78,7 +80,8 @@
     "detalle": "En Combo King de Pollo con QR o Tarjeta Visa Personal Pay",
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "burgerking-personalpay-encombokingdepo"
+    "slug": "burgerking-personalpay-encombokingdepo",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -105,7 +108,8 @@
     "detalle": "En Combo Ensalada Caesar con QR o Tarjeta Visa Personal Pay",
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "burgerking-personalpay-encomboensalada"
+    "slug": "burgerking-personalpay-encomboensalada",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -131,7 +135,8 @@
     "detalle": "En Combo Tostado J&Q + Café con QR o Tarjeta Visa Personal Pay",
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "burgerking-personalpay-encombotostadoj"
+    "slug": "burgerking-personalpay-encombotostadoj",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -159,7 +164,8 @@
     "detalle": "En Sundae con Cupón + Visa Personal Pay",
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mcdonalds-personalpay-ensundaeconcupn"
+    "slug": "mcdonalds-personalpay-ensundaeconcupn",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -187,7 +193,8 @@
     "detalle": "En McCombo Mediano Grand tasty Doble + Cupón",
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mcdonalds-personalpay-enmccombomedian"
+    "slug": "mcdonalds-personalpay-enmccombomedian",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -215,7 +222,8 @@
     "detalle": "En Ensalada Caesar con Cupón",
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mcdonalds-personalpay-enensaladacaesa"
+    "slug": "mcdonalds-personalpay-enensaladacaesa",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -242,7 +250,8 @@
     "detalle": "En 2 conos con Cupón",
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mcdonalds-personalpay-en2conosconcupn"
+    "slug": "mcdonalds-personalpay-en2conosconcupn",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -270,7 +279,8 @@
     "detalle": "En 2 cajitas felices con Cupón",
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mcdonalds-personalpay-en2cajitasfelic"
+    "slug": "mcdonalds-personalpay-en2cajitasfelic",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -298,7 +308,8 @@
     "detalle": "En Sundae Dulce de Leche con Cupón",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mostaza-personalpay-ensundaedulcede"
+    "slug": "mostaza-personalpay-ensundaedulcede",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -326,7 +337,8 @@
     "detalle": "En Combo TR1 con Cupón",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mostaza-personalpay-encombotr1concu"
+    "slug": "mostaza-personalpay-encombotr1concu",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -354,7 +366,8 @@
     "detalle": "En Tostado XL J&Q + Café o Jugo con Cupón",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mostaza-personalpay-entostadoxljqca"
+    "slug": "mostaza-personalpay-entostadoxljqca",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -382,7 +395,8 @@
     "detalle": "En Big Bang Cheddar con Cupón",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mostaza-personalpay-enbigbangchedda"
+    "slug": "mostaza-personalpay-enbigbangchedda",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -409,7 +423,8 @@
     "detalle": "En Pollo Crispy con Cupón",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "mostaza-personalpay-enpollocrispyco"
+    "slug": "mostaza-personalpay-enpollocrispyco",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -472,7 +487,8 @@
     "detalle": "En Bares y Restaurantes | PLAN SUELDO | CRÉDITO vía MODO QR | Tope mensual $20.000",
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
-    "slug": "gastronomasupervielle-modo-enbaresyrestaur"
+    "slug": "gastronomasupervielle-modo-enbaresyrestaur",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -503,7 +519,8 @@
     "detalle": "En Bares y Restaurantes | CARTERA GENERAL | CRÉDITO vía MODO QR | Tope mensual $8.000",
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
-    "slug": "gastronomasupervielle-modo-enbaresyrestaur"
+    "slug": "gastronomasupervielle-modo-enbaresyrestaur",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -530,7 +547,8 @@
     "detalle": "Con Supervielle MODO QR/NFC | Tope mensual $10.000",
     "vigencia": "31/05/2026",
     "forma_pago": "QR",
-    "slug": "gelato-modo-consuperviellem"
+    "slug": "gelato-modo-consuperviellem",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -557,7 +575,8 @@
     "detalle": "10% Reintegro + 3 cuotas sin interés | Presencial/Online | Tope $10.000 x mes",
     "vigencia": "31/05/2026",
     "forma_pago": "Tarjeta",
-    "slug": "farmaciasbna-modo-10reintegro3cuo"
+    "slug": "farmaciasbna-modo-10reintegro3cuo",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -584,7 +603,8 @@
     "detalle": "Con Supervielle MODO QR | Tope mensual $10.000",
     "vigencia": "31/05/2026",
     "forma_pago": "QR",
-    "slug": "pranzoempanadas-modo-consuperviellem"
+    "slug": "pranzoempanadas-modo-consuperviellem",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -611,7 +631,8 @@
     "detalle": "En Homestyle con Visa Personal Pay",
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
-    "slug": "wendys-personalpay-enhomestyleconv"
+    "slug": "wendys-personalpay-enhomestyleconv",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -639,7 +660,8 @@
     "detalle": "En Combo Dave´s Simple con Visa Personal Pay",
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
-    "slug": "wendys-personalpay-encombodavessim"
+    "slug": "wendys-personalpay-encombodavessim",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -666,7 +688,8 @@
     "detalle": "En Capuchino Grande + Tostado con Visa Personal Pay",
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
-    "slug": "wendys-personalpay-encapuchinogran"
+    "slug": "wendys-personalpay-encapuchinogran",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -693,7 +716,8 @@
     "detalle": "En Capuchino Grande + Medialuna con Visa Personal Pay",
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
-    "slug": "wendys-personalpay-encapuchinogran"
+    "slug": "wendys-personalpay-encapuchinogran",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Personal Pay",
@@ -721,7 +745,8 @@
     "detalle": "En Combo Romano Junior con Cupón",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "milanga-personalpay-encomboromanoju"
+    "slug": "milanga-personalpay-encomboromanoju",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -746,7 +771,8 @@
     "detalle": "En Empanadas con MODO QR | Presencial | Tope $4.000 x semana | Mínimo $12.000",
     "vigencia": "26/03/2026",
     "forma_pago": "QR",
-    "slug": "soloempanadas-modo-enempanadasconm"
+    "slug": "soloempanadas-modo-enempanadasconm",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -771,7 +797,8 @@
     "detalle": "En Empanadas con MODO QR | Presencial | $4.000 por banco/semana | Mínimo $12.000",
     "vigencia": "26/03/2026",
     "forma_pago": "QR",
-    "slug": "kioscodeempanadas-modo-enempanadasconm"
+    "slug": "kioscodeempanadas-modo-enempanadasconm",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "MODO",
@@ -797,7 +824,8 @@
     "detalle": "En Cafetería con MODO QR | Presencial | Tope mensual $5.000",
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
-    "slug": "mokkacoffeestore-modo-encafeteraconmo"
+    "slug": "mokkacoffeestore-modo-encafeteraconmo",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Tarjeta",
@@ -825,7 +853,8 @@
     "detalle": "En pasajes de Colectivo | 100% Reintegro con VISA DÉBITO (NFC) desde el móvil | Tope $10.000",
     "vigencia": "30/04/2026",
     "forma_pago": "NFC",
-    "slug": "colectivos-tarjeta-enpasajesdecole"
+    "slug": "colectivos-tarjeta-enpasajesdecole",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Tarjeta",
@@ -853,7 +882,8 @@
     "detalle": "En pasajes de Subte | 100% Reintegro con VISA DÉBITO (NFC) desde el móvil | Tope $10.000",
     "vigencia": "30/04/2026",
     "forma_pago": "NFC",
-    "slug": "subte-tarjeta-enpasajesdesubt"
+    "slug": "subte-tarjeta-enpasajesdesubt",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Tarjeta",
@@ -883,7 +913,8 @@
     "detalle": "Mocha Latte/Frappuccino | VISA CONTACTLESS (NFC) | Pedir en caja (No QR/No Delivery)",
     "vigencia": "30/06/2026",
     "forma_pago": "NFC",
-    "slug": "starbucks-tarjeta-mochalattefrapp"
+    "slug": "starbucks-tarjeta-mochalattefrapp",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Tarjeta",
@@ -911,7 +942,8 @@
     "detalle": "En el total de la cuenta con Tarjeta VISA (Classic/Gold/Platinum/Signature/Prepaga)",
     "vigencia": "30/06/2026",
     "forma_pago": "Tarjeta",
-    "slug": "usainboltstracksrecords-tarjeta-eneltotaldelacu"
+    "slug": "usainboltstracksrecords-tarjeta-eneltotaldelacu",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "medio_pago": "Tarjeta",
@@ -938,7 +970,8 @@
     ],
     "detalle": "En el total de la cuenta con Tarjeta VISA (Classic/Gold/Platinum/Signature/Prepaga)",
     "vigencia": "30/06/2026",
-    "slug": "barritademar-tarjeta-eneltotaldelacu"
+    "slug": "barritademar-tarjeta-eneltotaldelacu",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Chungo",
@@ -954,15 +987,16 @@
       "chungo"
     ],
     "dias": [
-      "lunes",
-      "martes",
-      "miercoles",
-      "jueves"
+      0,
+      1,
+      2,
+      3
     ],
     "detalle": "1/4kg de helado de regalo con la compra de 1kg.",
     "vigencia": "30/06/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "chungo-personalpay-14kgdeheladoder"
+    "slug": "chungo-personalpay-14kgdeheladoder",
+    "fecha_modificacion": "25/3/2026, 19:57:34"
   },
   {
     "comercio": "All Day",
@@ -986,7 +1020,8 @@
     "detalle": "Disfrutá de un 10% de descuento en gastronomía.",
     "vigencia": "31/08/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "allday-personalpay-pagandocontutar"
+    "slug": "allday-personalpay-pagandocontutar",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Farmalife",
@@ -1017,23 +1052,26 @@
     "comercio": "Chungo",
     "medio_pago": "Personal Pay",
     "categoria": "heladerias",
-    "descuento": "8% OFF",
+    "descuento": "3x2",
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
       "chungo"
     ],
     "dias": [
-      "lunes",
-      "martes",
-      "miercoles",
-      "jueves",
-      "viernes"
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
     ],
     "detalle": "Disfrutá de un 3er (tercer) cucurucho ¡¡Gratis!! con la compra de 2 (dos) cucuruchos.",
     "vigencia": "30/06/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "chungo-personalpay-rindasroof3erte"
+    "slug": "chungo-personalpay-rindasroof3erte",
+    "fecha_modificacion": "25/3/2026, 17:17:03"
   },
   {
     "comercio": "Freddo",
@@ -1057,7 +1095,8 @@
     "detalle": "2x1 en cucuruchos.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-2x1pagando2x1en-q2u"
+    "slug": "freddo-personalpay-2x1pagando2x1en-q2u",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Freddo",
@@ -1081,7 +1120,8 @@
     "detalle": "En 1/4kg de helado.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-pagandoenel14kg-6ja"
+    "slug": "freddo-personalpay-pagandoenel14kg-6ja",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Freddo",
@@ -1105,7 +1145,8 @@
     "detalle": "En el kilo de helado.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-pagandoenelkilo-ok6"
+    "slug": "freddo-personalpay-pagandoenelkilo-ok6",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Freddo",
@@ -1123,7 +1164,8 @@
     "detalle": "2x1 en cuartos, los días martes.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-2x1martespagand-qq1"
+    "slug": "freddo-personalpay-2x1martespagand-qq1",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Heladera Smart",
@@ -1147,7 +1189,8 @@
     "detalle": "En el segundo cucurucho mediano.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa"
+    "slug": "heladerasmart-personalpay-heladerasmartpa",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Heladera Smart",
@@ -1171,7 +1214,8 @@
     "detalle": "En 1/4kg de helado.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa-qgc"
+    "slug": "heladerasmart-personalpay-heladerasmartpa-qgc",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Heladera Smart",
@@ -1195,7 +1239,8 @@
     "detalle": "En potes placeres de 250grs sin TACC.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa-cfk"
+    "slug": "heladerasmart-personalpay-heladerasmartpa-cfk",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Heladera Smart",
@@ -1219,7 +1264,8 @@
     "detalle": "En potes placeres de 250grs sin azúcar.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa-47w"
+    "slug": "heladerasmart-personalpay-heladerasmartpa-47w",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Tento",
@@ -1239,7 +1285,8 @@
     "detalle": "Lunes a Viernes 2x1 en cucuruchos de 1 bocha.",
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "tento-personalpay-2x1lunesavierne-zix"
+    "slug": "tento-personalpay-2x1lunesavierne-zix",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Coto",
@@ -1258,7 +1305,8 @@
     "detalle": "Pagando desde el celu sin contacto (NFC) en la app (Android), sin tope.",
     "vigencia": "28/05/2026",
     "forma_pago": "NFC",
-    "slug": "coto-cualquiermedio-supermercadojue"
+    "slug": "coto-cualquiermedio-supermercadojue",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Carrefour",
@@ -1281,7 +1329,8 @@
     "detalle": "Sábado promoción exclusiva de para billeteras virtuales. Sin tope.",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "carrefour-personalpay-sbadopromocinex-uk3"
+    "slug": "carrefour-personalpay-sbadopromocinex-uk3",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Comercio",
@@ -1305,7 +1354,8 @@
     "detalle": "Recargas movistar prepago o tuenti 20% reintegro. Tope $2.000.",
     "vigencia": "31/03/2026",
     "forma_pago": "Tarjeta",
-    "slug": "comercio-personalpay-recargasmovista-10y"
+    "slug": "comercio-personalpay-recargasmovista-10y",
+    "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
     "comercio": "Burger King",
@@ -1367,17 +1417,13 @@
       "aprovech  de"
     ],
     "dias": [
-      "lunes",
-      "martes",
-      "miercoles",
-      "jueves",
-      "viernes"
+      6
     ],
     "detalle": "En combustibles cargando los Domingos con Supervielle. Tope de reintegro $10.000.",
     "vigencia": "31/03/26",
     "forma_pago": "QR/NFC",
     "slug": "aprovechde-modo-eaprovech10dere-50t",
-    "fecha_modificacion": "25/3/2026, 09:36:08"
+    "fecha_modificacion": "25/3/2026, 20:00:40"
   },
   {
     "comercio": "Combustible",
@@ -1390,17 +1436,13 @@
       "comercio"
     ],
     "dias": [
-      "lunes",
-      "martes",
-      "miercoles",
-      "jueves",
-      "viernes"
+      4
     ],
     "detalle": "Reintegro en combustibles con Banco Nación los Viernes! Tope de reintegro $10.000.",
     "vigencia": "30/06/2026",
     "forma_pago": "QR",
     "slug": "comercio-cualquiermedio-reintegroencomb",
-    "fecha_modificacion": "25/3/2026, 10:13:15"
+    "fecha_modificacion": "25/3/2026, 20:00:40"
   },
   {
     "comercio": "Coto",
@@ -1421,5 +1463,31 @@
     "forma_pago": "NFC",
     "slug": "coto-cualquiermedio-nfc30deahorrota-xn0",
     "fecha_modificacion": "25/3/2026, 10:09:11"
+  },
+  {
+    "comercio": "El Desembarco",
+    "medio_pago": "Personal Pay",
+    "categoria": "comida",
+    "descuento": "15% OFF",
+    "detalle": "Paga con cualquier QR o Tarjeta Visa Personal Pay.",
+    "vigencia": "30/09/2026",
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "el desembarco",
+      "compras"
+    ],
+    "forma_pago": "QR/Tarjeta",
+    "slug": "eldesembarco-personalpay-pagandoeneltota",
+    "fecha_modificacion": "25/3/2026, 16:26:49"
   }
 ]
