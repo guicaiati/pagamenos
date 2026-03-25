@@ -261,16 +261,28 @@ function buscar() {
     const busqueda = busquedaElement ? busquedaElement.value : "";
 
     let filtered = promos.filter(p => {
+        // Exclude expired promos
+        if (p.vigencia) {
+            const parts = p.vigencia.split('/');
+            if (parts.length === 3) {
+                let [dd, mm, yyyy] = parts;
+                if (yyyy.length === 2) yyyy = "20" + yyyy;
+                const expDate = new Date(yyyy, mm - 1, dd);
+                if (expDate < new Date().setHours(0,0,0,0)) {
+                    return false;
+                }
+            }
+        }
+
         const busquedaLower = busqueda.toLowerCase();
         const matchesSearch = busqueda === "" ||
             p.comercio.toLowerCase().includes(busquedaLower) ||
             (p.detalle && p.detalle.toLowerCase().includes(busquedaLower)) ||
-            p.tags.some(tag => tag.toLowerCase().includes(busquedaLower));
+            (p.tags && p.tags.some(tag => tag.toLowerCase().includes(busquedaLower)));
 
         let matchesCategory = !activeCategory;
         if (activeCategory) {
-            matchesCategory = p.categoria.toLowerCase() === activeCategory ||
-                p.tags.some(tag => tag.toLowerCase() === activeCategory);
+            matchesCategory = p.categoria && p.categoria.toLowerCase() === activeCategory;
         }
 
         return matchesSearch && matchesCategory;
@@ -388,19 +400,32 @@ function render(options) {
                         <span style="background: rgba(255, 209, 0, 0.15); font-size: 9px; padding: 2px 6px; border-radius: 4px;">AHORRÁS $${saved.toLocaleString('es-AR')}</span>
                     </div>
                 `;
-            } const formaPago = benefit.forma_pago || 'Tarjeta';
-
-            let iconHTML = `<i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`;
-            if (formaPago === 'QR') {
-                iconHTML = `<i data-lucide="qr-code" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`;
-            } else if (formaPago === 'NFC') {
-                iconHTML = `<i data-lucide="nfc" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`;
-            } else if (formaPago === 'QR/Tarjeta') {
-                iconHTML = `
-                    <i data-lucide="qr-code" style="width: 14px; height: 14px; color: var(--accent-green);"></i>
-                    <i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--accent-green);"></i>
-                `;
             }
+            
+            const formaPago = benefit.forma_pago || 'Tarjeta';
+            const formaPagoU = formaPago.toUpperCase();
+            
+            let icons = [];
+            let hasCard = false;
+
+            if (formaPagoU.includes('QR')) {
+                icons.push(`<i data-lucide="qr-code" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`);
+            }
+            if (formaPagoU.includes('NFC')) {
+                icons.push(`<i data-lucide="nfc" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`);
+            }
+            
+            if (formaPagoU.includes('TARJETA') || formaPagoU.includes('CREDITO') || formaPagoU.includes('CRÉDITO') || formaPagoU.includes('DEBITO') || formaPagoU.includes('DÉBITO')) {
+                hasCard = true;
+            }
+
+            // Fallback default a Tarjeta si no especifica nada particular,
+            // o si indica explícitamente tarjeta combinada (ej: QR/Tarjeta)
+            if (hasCard || icons.length === 0) {
+                icons.push(`<i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--accent-green);"></i>`);
+            }
+
+            let iconHTML = icons.join('\n');
 
             benefitsHTML += `
                 <div class="benefit-block ${isHighlight ? 'highlight' : ''} ${globalBestClass}" style="padding: 15px; border-radius: 16px; background: rgba(255, 255, 255, 0.03); border: ${borderStyle}; margin-bottom: 12px; position: relative; overflow: hidden;">

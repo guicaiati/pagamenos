@@ -26,5 +26,13 @@
   "facturas": {
     "label": "Servicios",
     "icon": "receipt"
+  },
+  "combustible": {
+    "label": "Combustible",
+    "icon": "car"
+  },
+  "otros": {
+    "label": "Otros",
+    "icon": "more-horizontal"
   }
 }

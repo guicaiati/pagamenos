@@ -110,7 +110,7 @@
   {
     "medio_pago": "Personal Pay",
     "comercio": "Burger King",
-    "categoria": "desayuno_merienda",
+    "categoria": "comida",
     "descuento": "25% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -220,7 +220,7 @@
   {
     "medio_pago": "Personal Pay",
     "comercio": "McDonald's",
-    "categoria": "heladerias",
+    "categoria": "comida",
     "descuento": "20% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -331,7 +331,7 @@
   {
     "medio_pago": "Personal Pay",
     "comercio": "Mostaza",
-    "categoria": "desayuno_merienda",
+    "categoria": "comida",
     "descuento": "30% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -440,7 +440,8 @@
     "detalle": "En Bares y Restaurantes | IDENTITÉ | CRÉDITO vía MODO QR | Tope mensual $50.000",
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
-    "slug": "gastronomasupervielle-modo-enbaresyrestaur"
+    "slug": "gastronomasupervielle-modo-enbaresyrestaur",
+    "fecha_modificacion": "25/3/2026, 10:47:57"
   },
   {
     "medio_pago": "MODO",
@@ -643,7 +644,7 @@
   {
     "medio_pago": "Personal Pay",
     "comercio": "Wendy´s",
-    "categoria": "desayuno_merienda",
+    "categoria": "comida",
     "descuento": "20% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -670,7 +671,7 @@
   {
     "medio_pago": "Personal Pay",
     "comercio": "Wendy´s",
-    "categoria": "desayuno_merienda",
+    "categoria": "comida",
     "descuento": "20% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -966,13 +967,12 @@
   {
     "comercio": "All Day",
     "medio_pago": "Personal Pay",
-    "categoria": "desayuno_merienda",
+    "categoria": "comida",
     "descuento": "10% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "all day",
-      "desayuno_merienda"
+      "all day"
     ],
     "dias": [
       "lunes",
@@ -991,13 +991,12 @@
   {
     "comercio": "Farmalife",
     "medio_pago": "Personal Pay",
-    "categoria": "compras",
+    "categoria": "farmacia",
     "descuento": "10% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "farmalife",
-      "compras"
+      "farmalife"
     ],
     "dias": [
       "lunes",
@@ -1011,7 +1010,8 @@
     "detalle": "10% de reintegro en el total de la compra. Tope de reintegro $3.000.",
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "farmalife-personalpay-10reintegroopag"
+    "slug": "farmalife-personalpay-10reintegroopag",
+    "fecha_modificacion": "25/3/2026, 10:11:45"
   },
   {
     "comercio": "Chungo",
@@ -1021,8 +1021,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "chungo",
-      "desayuno_merienda"
+      "chungo"
     ],
     "dias": [
       "lunes",
@@ -1044,8 +1043,7 @@
     "tipo_beneficio": "Promo",
     "tags": [
       "promocion",
-      "freddo",
-      "desayuno_merienda"
+      "freddo"
     ],
     "dias": [
       "lunes",
@@ -1069,8 +1067,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "freddo",
-      "compras"
+      "freddo"
     ],
     "dias": [
       "lunes",
@@ -1094,8 +1091,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "freddo",
-      "desayuno_merienda"
+      "freddo"
     ],
     "dias": [
       "lunes",
@@ -1119,8 +1115,7 @@
     "tipo_beneficio": "Promo",
     "tags": [
       "promocion",
-      "freddo",
-      "compras"
+      "freddo"
     ],
     "dias": [
       "martes"
@@ -1138,8 +1133,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "heladera smart",
-      "desayuno_merienda"
+      "heladera smart"
     ],
     "dias": [
       "lunes",
@@ -1163,8 +1157,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "heladera smart",
-      "desayuno_merienda"
+      "heladera smart"
     ],
     "dias": [
       "lunes",
@@ -1188,8 +1181,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "heladera smart",
-      "compras"
+      "heladera smart"
     ],
     "dias": [
       "lunes",
@@ -1213,8 +1205,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "heladera smart",
-      "compras"
+      "heladera smart"
     ],
     "dias": [
       "lunes",
@@ -1300,8 +1291,7 @@
     "tipo_beneficio": "Descuento",
     "tags": [
       "promocion",
-      "comercio",
-      "compras"
+      "comercio"
     ],
     "dias": [
       "lunes",
@@ -1342,5 +1332,94 @@
     "forma_pago": "QR/Tarjeta",
     "slug": "burgerking-personalpay-pagando30encomb-pep",
     "fecha_modificacion": "24/3/2026, 23:10:09"
+  },
+  {
+    "comercio": "Comercio",
+    "medio_pago": "Tarjeta",
+    "categoria": "transporte",
+    "descuento": "100%",
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "comercio"
+    ],
+    "dias": [
+      "lunes",
+      "martes",
+      "miercoles",
+      "jueves",
+      "viernes"
+    ],
+    "detalle": "Para pagos con saldo en cuenta mediante el QR desde la app BNA+",
+    "vigencia": "01/03/2026",
+    "forma_pago": "QR/Tarjeta/NFC",
+    "slug": "comercio-cualquiermedio-promocinvlidade",
+    "fecha_modificacion": "25/3/2026, 08:59:48"
+  },
+  {
+    "comercio": "Combustible",
+    "medio_pago": "MODO",
+    "categoria": "combustible",
+    "descuento": "10% OFF",
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "aprovech  de"
+    ],
+    "dias": [
+      "lunes",
+      "martes",
+      "miercoles",
+      "jueves",
+      "viernes"
+    ],
+    "detalle": "En combustibles cargando los Domingos con Supervielle. Tope de reintegro $10.000.",
+    "vigencia": "31/03/26",
+    "forma_pago": "QR/NFC",
+    "slug": "aprovechde-modo-eaprovech10dere-50t",
+    "fecha_modificacion": "25/3/2026, 09:36:08"
+  },
+  {
+    "comercio": "Combustible",
+    "medio_pago": "MODO",
+    "categoria": "combustible",
+    "descuento": "20%",
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "comercio"
+    ],
+    "dias": [
+      "lunes",
+      "martes",
+      "miercoles",
+      "jueves",
+      "viernes"
+    ],
+    "detalle": "Reintegro en combustibles con Banco Nación los Viernes! Tope de reintegro $10.000.",
+    "vigencia": "30/06/2026",
+    "forma_pago": "QR",
+    "slug": "comercio-cualquiermedio-reintegroencomb",
+    "fecha_modificacion": "25/3/2026, 10:13:15"
+  },
+  {
+    "comercio": "Coto",
+    "medio_pago": "Tarjeta",
+    "categoria": "compras",
+    "descuento": "30% OFF",
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "coto",
+      "compras"
+    ],
+    "dias": [
+      "jueves"
+    ],
+    "detalle": "Con tarjeta de débito del banco Supervielle. Sin tope.",
+    "vigencia": "28/05/2026",
+    "forma_pago": "NFC",
+    "slug": "coto-cualquiermedio-nfc30deahorrota-xn0",
+    "fecha_modificacion": "25/3/2026, 10:09:11"
   }
 ]
