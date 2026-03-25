@@ -359,6 +359,17 @@ function parseValue(desc) {
     return match ? parseInt(match[1]) : 0;
 }
 
+// Convierte días a índices 0-6, acepta strings ("lunes") o números (0)
+const DIA_MAP_APP = { lunes:0, martes:1, miercoles:2, jueves:3, viernes:4, sabado:5, domingo:6 };
+function normalizeDias(dias) {
+    if (!Array.isArray(dias)) return [];
+    return dias.map(d => {
+        if (typeof d === 'number') return d;
+        const key = String(d).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return DIA_MAP_APP[key] ?? -1;
+    }).filter(i => i >= 0 && i <= 6);
+}
+
 function render(options) {
     const container = document.getElementById('resultados');
     if (!container) return;
@@ -395,9 +406,9 @@ function render(options) {
                 const saved = benefit.ahorro;
 
                 priceHUD = `
-                    <div class="price-hero" style="color: #FFD100; font-size: 14px; font-weight: 900; margin-bottom: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
+                    <div class="price-hero" style="color: #FFD100; font-size: 14px; font-weight: 900; margin-bottom: 4px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
                         <span>PAGÁS FINAL: $${final.toLocaleString('es-AR')}</span>
-                        <span style="background: rgba(255, 209, 0, 0.15); font-size: 9px; padding: 2px 6px; border-radius: 4px;">AHORRÁS $${saved.toLocaleString('es-AR')}</span>
+                        <span style="background: rgba(255, 209, 0, 0.15); font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px;">AHORRÁS $${saved.toLocaleString('es-AR')}</span>
                     </div>
                 `;
             }
@@ -434,17 +445,63 @@ function render(options) {
                         <span class="tag-mini ${benefit.medio_pago === 'Personal Pay' ? 'purple' : ''} ${benefit.medio_pago === 'MODO' ? 'active-green' : ''}">${benefit.tipo_beneficio}</span>
                     </div>
                     ${priceHUD}
-                    <div class="benefit-flex" style="display: flex; align-items: center; gap: 15px; margin: 2px 0;">
+                    <div class="benefit-flex" style="display: flex; align-items: center; gap: 15px; margin: 4px 0;">
                         <div class="benefit-value" style="font-size: 32px; font-weight: 900; line-height: 1;">${benefit.descuento}</div>
                     </div>
-                    <div class="benefit-detail" style="font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-top: 5px; margin-bottom: 10px;">${benefit.detalle}</div>
+                    <div class="benefit-detail">${benefit.detalle}</div>
                     
-                    <div style="display:flex; justify-content:space-between; align-items:center; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <div style="display: flex; align-items: center; gap: 6px;">
+                    <!-- Etiqueta de días inteligente -->
+                    ${(() => {
+                        const activeDias = normalizeDias(benefit.dias);
+                        if (activeDias.length === 0) return '';
+
+                        // Comparar arrays ordenados
+                        const eq = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
+                        const sorted = [...activeDias].sort((a, b) => a - b);
+
+                        // Detectar patrones comunes
+                        let label = null;
+                        if (eq(sorted, [0,1,2,3,4,5,6])) label = 'Todos los días';
+                        else if (eq(sorted, [0,1,2,3,4]))   label = 'Lunes a Viernes';
+                        else if (eq(sorted, [0,1,2,3,4,5])) label = 'Lunes a Sábado';
+                        else if (eq(sorted, [5,6]))          label = 'Fin de semana';
+
+                        const tagStyle = `
+                            display:inline-flex; align-items:center; padding:4px 12px;
+                            border-radius:4px; font-size:10px; font-weight:800;
+                            background:rgba(160,100,255,0.85);
+                            color:#fff;
+                            border:1px solid rgba(160,100,255,0.5);
+                            margin-bottom:12px; cursor:default;
+                            letter-spacing: 0.05em; text-transform: uppercase;
+                        `;
+
+                        if (label) {
+                            return `<div><span style="${tagStyle}">${label}</span></div>`;
+                        }
+
+                        // Chips individuales para combinaciones sin nombre
+                        const DAYS = ['L','M','M','J','V','S','D'];
+                        const chips = DAYS.map((d, i) => {
+                            const isActive = sorted.includes(i);
+                            return `<span style="
+                                display:inline-flex; align-items:center; justify-content:center;
+                                width:24px; height:24px; border-radius:6px; font-size:10px;
+                                font-weight:800; cursor:default;
+                                background:${isActive ? 'rgba(160,100,255,0.85)' : 'rgba(255,255,255,0.06)'};
+                                color:${isActive ? '#fff' : 'rgba(255,255,255,0.4)'};
+                                border:1px solid ${isActive ? 'rgba(160,100,255,0.5)' : 'rgba(255,255,255,0.06)'};
+                            ">${d}</span>`;
+                        }).join('');
+                        return `<div style="display:flex;gap:4px;margin-bottom:12px;">${chips}</div>`;
+                    })()}
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding-top: 12px; border-top: 1px solid var(--border);">
+                        <div style="display: flex; align-items: center; gap: 8px;">
                             ${iconHTML}
-                            <span style="font-size: 10px; font-weight: 700; color: var(--text-muted); opacity: 0.8;">PAGÁS CON ${formaPago.toUpperCase()}</span>
+                            <span style="font-size: 11px; font-weight: 800; color: var(--text-muted);">PAGÁS CON ${formaPago.toUpperCase()}</span>
                         </div>
-                        <span class="label-sm" style="font-size: 8px;">VIGENCIA: ${benefit.vigencia}</span>
+                        <span class="label-sm">VIGENCIA: ${benefit.vigencia}</span>
                     </div>
                 </div>
             `;

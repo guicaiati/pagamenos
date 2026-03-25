@@ -1,13 +1,14 @@
 :root {
     --bg-deep: #020617;
-    /* Deep Navy from landing/mockup */
+    /* Deep Navy */
     --bg-card: #0f172a;
     --bg-benefit: #1e293b;
     --accent-green: #10b981;
     --accent-purple: #c084fc;
     --text-primary: #f8fafc;
-    --text-muted: #94a3b8;
-    --border: rgba(255, 255, 255, 0.08);
+    /* Mayor contraste (cumple WCAG AAA sobre fondos oscuros) */
+    --text-muted: #cbd5e1;
+    --border: rgba(255, 255, 255, 0.12);
 }
 
 * {
@@ -147,6 +148,11 @@ body {
     width: 100%;
 }
 
+.search-box input::placeholder {
+    color: var(--text-muted);
+    opacity: 1; /* Necesario porque Firefox baja la opacidad por defecto */
+}
+
 /* Filter Chips (Horizontal) */
 .filter-chips {
     display: flex;
@@ -162,13 +168,13 @@ body {
 }
 
 .chip {
-    padding: 8px 16px;
+    padding: 8px 18px;
     border-radius: 20px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    background: rgba(255, 255, 255, 0.03);
+    letter-spacing: 0.05em;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border);
     color: var(--text-muted);
     white-space: nowrap;
@@ -339,13 +345,13 @@ body {
     /* Remove "MEJOR OPCION" label per user preference for cleaner look */
 }
 
-/* Text Hierarchy */
+/* Text Hierarchy - Mejor Accesibilidad */
 .label-sm {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     color: var(--text-muted);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
 }
 
 .benefit-block.highlight .label-sm {
@@ -354,24 +360,23 @@ body {
 }
 
 .benefit-detail {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 1.4;
-    color: white;
-    opacity: 1;
-    margin-bottom: 4px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin-bottom: 8px;
 }
 
 .tag-mini {
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 4px 8px;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
 }
 
 .tag-mini.purple {
