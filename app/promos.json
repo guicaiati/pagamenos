@@ -1011,15 +1011,12 @@
     "detalle": "10% de reintegro en el total de la compra. Tope de reintegro $3.000.",
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "farmalife-personalpay-10reintegroopag",
-    "status": "new",
-    "matchScore": 50,
-    "original": null
+    "slug": "farmalife-personalpay-10reintegroopag"
   },
   {
     "comercio": "Chungo",
     "medio_pago": "Personal Pay",
-    "categoria": "comida",
+    "categoria": "heladerias",
     "descuento": "8% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -1037,22 +1034,12 @@
     "detalle": "Disfrutá de un 3er (tercer) cucurucho ¡¡Gratis!! con la compra de 2 (dos) cucuruchos.",
     "vigencia": "30/06/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "chungo-personalpay-rindasroof3erte",
-    "status": "update",
-    "matchScore": 70,
-    "original": {
-      "comercio": "Chungo",
-      "medio_pago": "Personal Pay",
-      "descuento": "8% OFF",
-      "detalle": "1/4kg de helado de regalo con la compra de 1kg.",
-      "forma_pago": "QR/Tarjeta"
-    },
-    "isForcedNew": false
+    "slug": "chungo-personalpay-rindasroof3erte"
   },
   {
     "comercio": "Freddo",
     "medio_pago": "Personal Pay",
-    "categoria": "comida",
+    "categoria": "heladerias",
     "descuento": "2X1",
     "tipo_beneficio": "Promo",
     "tags": [
@@ -1072,18 +1059,7 @@
     "detalle": "2x1 en cucuruchos.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-2x1pagando2x1en-q2u",
-    "status": "new",
-    "matchScore": 49,
-    "original": {
-      "comercio": "Burger King",
-      "medio_pago": "Personal Pay",
-      "descuento": "2x1",
-      "detalle": "En Cono helado con QR o Tarjeta Visa Personal Pay",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "burgerking-personalpay-enconoheladocon"
-    },
-    "isForcedNew": true
+    "slug": "freddo-personalpay-2x1pagando2x1en-q2u"
   },
   {
     "comercio": "Freddo",
@@ -1108,18 +1084,7 @@
     "detalle": "En 1/4kg de helado.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-pagandoenel14kg-6ja",
-    "status": "new",
-    "matchScore": 50,
-    "original": {
-      "comercio": "Freddo",
-      "medio_pago": "Personal Pay",
-      "descuento": "2X1",
-      "detalle": "2x1 en cucuruchos.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "freddo-personalpay-2x1pagando2x1en-q2u"
-    },
-    "isForcedNew": true
+    "slug": "freddo-personalpay-pagandoenel14kg-6ja"
   },
   {
     "comercio": "Freddo",
@@ -1144,23 +1109,12 @@
     "detalle": "En el kilo de helado.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-pagandoenelkilo-ok6",
-    "status": "new",
-    "matchScore": 67,
-    "original": {
-      "comercio": "Freddo",
-      "medio_pago": "Personal Pay",
-      "descuento": "25% OFF",
-      "detalle": "En 1/4kg de helado.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "freddo-personalpay-pagandoenel14kg-6ja"
-    },
-    "isForcedNew": true
+    "slug": "freddo-personalpay-pagandoenelkilo-ok6"
   },
   {
     "comercio": "Freddo",
     "medio_pago": "Personal Pay",
-    "categoria": "comida",
+    "categoria": "heladerias",
     "descuento": "2X1",
     "tipo_beneficio": "Promo",
     "tags": [
@@ -1174,18 +1128,7 @@
     "detalle": "2x1 en cuartos, los días martes.",
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
-    "slug": "freddo-personalpay-2x1martespagand-qq1",
-    "status": "new",
-    "matchScore": 67,
-    "original": {
-      "comercio": "Freddo",
-      "medio_pago": "Personal Pay",
-      "descuento": "2X1",
-      "detalle": "2x1 en cucuruchos.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "freddo-personalpay-2x1pagando2x1en-q2u"
-    },
-    "isForcedNew": true
+    "slug": "freddo-personalpay-2x1martespagand-qq1"
   },
   {
     "comercio": "Heladera Smart",
@@ -1210,10 +1153,7 @@
     "detalle": "En el segundo cucurucho mediano.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa",
-    "status": "new",
-    "matchScore": 31,
-    "original": null
+    "slug": "heladerasmart-personalpay-heladerasmartpa"
   },
   {
     "comercio": "Heladera Smart",
@@ -1238,18 +1178,7 @@
     "detalle": "En 1/4kg de helado.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa-qgc",
-    "status": "new",
-    "matchScore": 100,
-    "original": {
-      "comercio": "Heladera Smart",
-      "medio_pago": "Personal Pay",
-      "descuento": "50% OFF",
-      "detalle": "En el segundo cucurucho mediano.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "heladerasmart-personalpay-heladerasmartpa"
-    },
-    "isForcedNew": true
+    "slug": "heladerasmart-personalpay-heladerasmartpa-qgc"
   },
   {
     "comercio": "Heladera Smart",
@@ -1274,18 +1203,7 @@
     "detalle": "En potes placeres de 250grs sin TACC.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa-cfk",
-    "status": "new",
-    "matchScore": 100,
-    "original": {
-      "comercio": "Heladera Smart",
-      "medio_pago": "Personal Pay",
-      "descuento": "50% OFF",
-      "detalle": "En el segundo cucurucho mediano.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "heladerasmart-personalpay-heladerasmartpa"
-    },
-    "isForcedNew": true
+    "slug": "heladerasmart-personalpay-heladerasmartpa-cfk"
   },
   {
     "comercio": "Heladera Smart",
@@ -1310,18 +1228,7 @@
     "detalle": "En potes placeres de 250grs sin azúcar.",
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "heladerasmart-personalpay-heladerasmartpa-47w",
-    "status": "new",
-    "matchScore": 100,
-    "original": {
-      "comercio": "Heladera Smart",
-      "medio_pago": "Personal Pay",
-      "descuento": "50% OFF",
-      "detalle": "En el segundo cucurucho mediano.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "heladerasmart-personalpay-heladerasmartpa"
-    },
-    "isForcedNew": true
+    "slug": "heladerasmart-personalpay-heladerasmartpa-47w"
   },
   {
     "comercio": "Tento",
@@ -1341,18 +1248,7 @@
     "detalle": "Lunes a Viernes 2x1 en cucuruchos de 1 bocha.",
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "tento-personalpay-2x1lunesavierne-zix",
-    "status": "new",
-    "matchScore": 65,
-    "original": {
-      "comercio": "Freddo",
-      "medio_pago": "Personal Pay",
-      "descuento": "2X1",
-      "detalle": "2x1 en cucuruchos.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "freddo-personalpay-2x1pagando2x1en-q2u"
-    },
-    "isForcedNew": true
+    "slug": "tento-personalpay-2x1lunesavierne-zix"
   },
   {
     "comercio": "Coto",
@@ -1371,10 +1267,7 @@
     "detalle": "Pagando desde el celu sin contacto (NFC) en la app (Android), sin tope.",
     "vigencia": "28/05/2026",
     "forma_pago": "NFC",
-    "slug": "coto-cualquiermedio-supermercadojue",
-    "status": "new",
-    "matchScore": 26,
-    "original": null
+    "slug": "coto-cualquiermedio-supermercadojue"
   },
   {
     "comercio": "Carrefour",
@@ -1397,18 +1290,7 @@
     "detalle": "Sábado promoción exclusiva de para billeteras virtuales. Sin tope.",
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
-    "slug": "carrefour-personalpay-sbadopromocinex-uk3",
-    "status": "new",
-    "matchScore": 45,
-    "original": {
-      "comercio": "All Day",
-      "medio_pago": "Personal Pay",
-      "descuento": "10% OFF",
-      "detalle": "Disfrutá de un 10% de descuento en gastronomía.",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "allday-personalpay-pagandocontutar"
-    },
-    "isForcedNew": true
+    "slug": "carrefour-personalpay-sbadopromocinex-uk3"
   },
   {
     "comercio": "Comercio",
@@ -1433,17 +1315,32 @@
     "detalle": "Recargas movistar prepago o tuenti 20% reintegro. Tope $2.000.",
     "vigencia": "31/03/2026",
     "forma_pago": "Tarjeta",
-    "slug": "comercio-personalpay-recargasmovista-10y",
-    "status": "new",
-    "matchScore": 45,
-    "original": {
-      "comercio": "McDonald's",
-      "medio_pago": "Personal Pay",
-      "descuento": "20% OFF",
-      "detalle": "En McCombo Mediano Grand tasty Doble + Cupón",
-      "forma_pago": "QR/Tarjeta",
-      "slug": "mcdonalds-personalpay-enmccombomedian"
-    },
-    "isForcedNew": true
+    "slug": "comercio-personalpay-recargasmovista-10y"
+  },
+  {
+    "comercio": "Burger King",
+    "medio_pago": "Personal Pay",
+    "categoria": "comida",
+    "descuento": "30% OFF",
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "burger king",
+      "comida"
+    ],
+    "dias": [
+      "lunes",
+      "martes",
+      "miercoles",
+      "jueves",
+      "viernes",
+      "sabado",
+      "domingo"
+    ],
+    "detalle": "Combo Cuarto XL.",
+    "vigencia": "31/12/2026",
+    "forma_pago": "QR/Tarjeta",
+    "slug": "burgerking-personalpay-pagando30encomb-pep",
+    "fecha_modificacion": "24/3/2026, 23:10:09"
   }
 ]

@@ -27,17 +27,20 @@
   {
     "comercio": "McDonald's",
     "producto": "McCombo Mediano Grand tasty Doble",
-    "precio": 21450
+    "precio": "20800",
+    "fecha_modificacion": "24/3/2026, 21:24:17"
   },
   {
     "comercio": "McDonald's",
     "producto": "Ensalada Caesar",
-    "precio": 9800
+    "precio": "12400",
+    "fecha_modificacion": "24/3/2026, 21:20:15"
   },
   {
     "comercio": "McDonald's",
     "producto": "Cajita Feliz",
-    "precio": 15100
+    "precio": "11400",
+    "fecha_modificacion": "24/3/2026, 21:21:58"
   },
   {
     "comercio": "Mostaza",
@@ -82,7 +85,8 @@
   {
     "comercio": "Milanga",
     "producto": "Combo Romano Junior",
-    "precio": 10500
+    "precio": "13200",
+    "fecha_modificacion": "24/3/2026, 23:13:44"
   },
   {
     "comercio": "Starbucks",

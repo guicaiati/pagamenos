@@ -670,6 +670,8 @@
                             <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">DETALLE / PRODUCTO</th>
                             <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">VALOR</th>
                             <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">VIGENCIA</th>
+                            <th style="padding:16px 14px; text-align:left; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">MODIFICADO</th>
+                            <th style="padding:16px 14px; text-align:center; color:var(--text-muted); font-size:11px; letter-spacing:2px; font-weight:800;">🗑️</th>
                         </tr>
                     </thead>
                     <tbody id="db-table-body"></tbody>
@@ -1373,8 +1375,26 @@
                     if (searchVal && !searchStr.includes(searchVal)) return;
 
                     count++;
+                    let isExpired = false;
+                    if (type === 'promos' && item.vigencia) {
+                        const parts = item.vigencia.split('/');
+                        if (parts.length === 3) {
+                            let [dd, mm, yyyy] = parts;
+                            if (yyyy.length === 2) yyyy = "20" + yyyy;
+                            const expDate = new Date(yyyy, mm - 1, dd);
+                            if (expDate < new Date().setHours(0,0,0,0)) {
+                                isExpired = true;
+                            }
+                        }
+                    }
+
                     const tr = document.createElement('tr');
                     tr.style.borderBottom = '1px solid rgba(255,255,255,0.02)';
+                    if (isExpired) {
+                        tr.style.opacity = '0.4';
+                        tr.style.background = 'rgba(255, 55, 55, 0.05)';
+                        tr.title = 'Promoción Vencida';
+                    }
                     
                     if (type === 'promos') {
                         tr.innerHTML = `
@@ -1402,6 +1422,10 @@
                             <td style="padding:16px 14px; outline:none; line-height:1.4; max-width:300px; font-size:12px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="detalle">${item.detalle || ''}</td>
                             <td style="padding:16px 14px; outline:none; font-weight:900; color:var(--accent-pink); font-size:14px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="descuento">${item.descuento || ''}</td>
                             <td style="padding:16px 14px; outline:none; font-size:11px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="vigencia">${item.vigencia || ''}</td>
+                            <td style="padding:16px 14px; font-size:10px; color:var(--text-muted); white-space:nowrap;" class="db-mod-date" data-dbtype="promos" data-dbidx="${idx}">${item.fecha_modificacion || '-'}</td>
+                            <td style="padding:16px 14px; text-align:center;">
+                                <button onclick="deleteDbRow('promos', ${idx})" style="background:rgba(255,55,55,0.1); border:none; color:#ff3737; cursor:pointer; padding:6px; border-radius:6px;" title="Eliminar registro">✕</button>
+                            </td>
                         `;
                     } else {
                         tr.innerHTML = `
@@ -1415,6 +1439,10 @@
                             <td style="padding:14px 12px; outline:none;" contenteditable="true" data-dbtype="precios" data-dbidx="${idx}" data-dbfield="producto">${item.producto || ''}</td>
                             <td style="padding:14px 12px; outline:none; font-weight:900;" contenteditable="true" data-dbtype="precios" data-dbidx="${idx}" data-dbfield="precio">${item.precio || ''}</td>
                             <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
+                            <td style="padding:14px 12px; font-size:10px; color:var(--text-muted); white-space:nowrap;" class="db-mod-date" data-dbtype="precios" data-dbidx="${idx}">${item.fecha_modificacion || '-'}</td>
+                            <td style="padding:14px 12px; text-align:center;">
+                                <button onclick="deleteDbRow('precios', ${idx})" style="background:rgba(255,55,55,0.1); border:none; color:#ff3737; cursor:pointer; padding:6px; border-radius:6px;" title="Eliminar registro">✕</button>
+                            </td>
                         `;
                     }
                     tbody.appendChild(tr);
@@ -1435,6 +1463,14 @@
                 const idx = parseInt(el.getAttribute('data-dbidx'));
                 const field = el.getAttribute('data-dbfield');
                 fullDbData[type][idx][field] = el.innerText.trim();
+                // Marcar fecha de modificación
+                const ahora = new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false });
+                fullDbData[type][idx].fecha_modificacion = ahora;
+                const modCell = document.querySelector(`.db-mod-date[data-dbtype="${type}"][data-dbidx="${idx}"]`);
+                if (modCell) {
+                    modCell.innerText = ahora;
+                    modCell.style.color = 'var(--accent-green)';
+                }
             }
         });
 
@@ -1479,6 +1515,14 @@
                 document.querySelectorAll('.db-cat-dropdown').forEach(d => d.style.display = 'none');
             }
         });
+
+        // Eliminar fila
+        window.deleteDbRow = (type, idx) => {
+            if (confirm("¿Seguro que querés eliminar este registro? (Necesita Guardar para aplicar)")) {
+                fullDbData[type].splice(idx, 1);
+                renderDbTable();
+            }
+        };
 
         async function saveDbChanges() {
             const btn = document.getElementById('db-save-btn');
