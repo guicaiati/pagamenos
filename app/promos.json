@@ -343,7 +343,7 @@
   {
     "medio_pago": "Personal Pay",
     "comercio": "Mostaza",
-    "categoria": "comida",
+    "categoria": "desayuno_merienda",
     "descuento": "30% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -367,7 +367,7 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mostaza-personalpay-entostadoxljqca",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 20:14:48"
   },
   {
     "medio_pago": "Personal Pay",
@@ -666,7 +666,7 @@
   {
     "medio_pago": "Personal Pay",
     "comercio": "Wendy´s",
-    "categoria": "comida",
+    "categoria": "desayuno_merienda",
     "descuento": "20% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -689,12 +689,12 @@
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
     "slug": "wendys-personalpay-encapuchinogran",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 20:15:31"
   },
   {
     "medio_pago": "Personal Pay",
     "comercio": "Wendy´s",
-    "categoria": "comida",
+    "categoria": "desayuno_merienda",
     "descuento": "20% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -717,7 +717,7 @@
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
     "slug": "wendys-personalpay-encapuchinogran",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 20:15:36"
   },
   {
     "medio_pago": "Personal Pay",
@@ -948,7 +948,7 @@
   {
     "medio_pago": "Tarjeta",
     "comercio": "Barrita de Mar",
-    "categoria": "desayuno_merienda",
+    "categoria": "comida",
     "descuento": "12% OFF",
     "tipo_beneficio": "Descuento",
     "tags": [
@@ -971,7 +971,7 @@
     "detalle": "En el total de la cuenta con Tarjeta VISA (Classic/Gold/Platinum/Signature/Prepaga)",
     "vigencia": "30/06/2026",
     "slug": "barritademar-tarjeta-eneltotaldelacu",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 20:16:03"
   },
   {
     "comercio": "Chungo",
@@ -1270,7 +1270,7 @@
   {
     "comercio": "Tento",
     "medio_pago": "Personal Pay",
-    "categoria": "desayuno_merienda",
+    "categoria": "heladerias",
     "descuento": "2X1",
     "tipo_beneficio": "Promo",
     "tags": [
@@ -1286,7 +1286,7 @@
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "tento-personalpay-2x1lunesavierne-zix",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 20:17:26"
   },
   {
     "comercio": "Coto",
@@ -1333,7 +1333,7 @@
     "fecha_modificacion": "25/3/2026, 17:15:01"
   },
   {
-    "comercio": "Comercio",
+    "comercio": "Telefonía",
     "medio_pago": "Personal Pay",
     "categoria": "facturas",
     "descuento": "20% OFF",
@@ -1343,19 +1343,19 @@
       "comercio"
     ],
     "dias": [
-      "lunes",
-      "martes",
-      "miercoles",
-      "jueves",
-      "viernes",
-      "sabado",
-      "domingo"
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
     ],
-    "detalle": "Recargas movistar prepago o tuenti 20% reintegro. Tope $2.000.",
+    "detalle": "Recargas Movistar Prepago o Tuenti desde Personal Pay y obtené 20% reintegro. Tope $2.000.",
     "vigencia": "31/03/2026",
     "forma_pago": "Tarjeta",
     "slug": "comercio-personalpay-recargasmovista-10y",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 20:44:13"
   },
   {
     "comercio": "Burger King",
@@ -1489,5 +1489,98 @@
     "forma_pago": "QR/Tarjeta",
     "slug": "eldesembarco-personalpay-pagandoeneltota",
     "fecha_modificacion": "25/3/2026, 16:26:49"
+  },
+  {
+    "comercio": "Café Martínez",
+    "medio_pago": "Personal Pay",
+    "categoria": "desayuno_merienda",
+    "descuento": "25% OFF",
+    "detalle": "En el total de la compra con tope de $6000.",
+    "vigencia": "30/04/2026",
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "caf martnez",
+      "desayuno_merienda"
+    ],
+    "forma_pago": "QR/Tarjeta",
+    "slug": "cafmartnez-personalpay-cafmartnezpagan-dl3",
+    "fecha_modificacion": "25/3/2026, 20:24:05"
+  },
+  {
+    "comercio": "Colectivos",
+    "medio_pago": "Personal Pay",
+    "categoria": "transporte",
+    "descuento": "100% OFF",
+    "detalle": "Pagando desde el celu sin contacto (NFC) obtené un 100% de reintegro en el costo del pasaje de buses.",
+    "vigencia": "30/04/2026",
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "transporte",
+      "compras"
+    ],
+    "forma_pago": "NFC",
+    "slug": "transporte-cualquiermedio-exclusivopromoc",
+    "fecha_modificacion": "25/3/2026, 20:37:52"
+  },
+  {
+    "comercio": "DIA%",
+    "medio_pago": "MODO",
+    "categoria": "compras",
+    "descuento": "25% OFF",
+    "detalle": "Compras con Modo QR online y presencial. Tope de reintegro $20.000.",
+    "vigencia": "31/03/2026",
+    "dias": [
+      4,
+      5
+    ],
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "logo",
+      "compras"
+    ],
+    "forma_pago": "QR",
+    "slug": "logo-mercadopago-categorasbuscar",
+    "fecha_modificacion": "25/3/2026, 23:11:20"
+  },
+  {
+    "comercio": "Carrefour",
+    "medio_pago": "MODO",
+    "categoria": "compras",
+    "descuento": "30% OFF",
+    "detalle": "Pagando con tarjeta de Crédito Visa y Mastercard. Si sos jubilado, 5% de ahorro adicional. Tope de devolución semanal: $12.000.",
+    "vigencia": "31/03/2026",
+    "dias": [
+      2
+    ],
+    "tipo_beneficio": "Descuento",
+    "tags": [
+      "promocion",
+      "carrefour",
+      "compras"
+    ],
+    "forma_pago": "QR",
+    "slug": "carrefour-modo-30deahorroenela-kll",
+    "fecha_modificacion": "25/3/2026, 23:17:52"
   }
 ]

@@ -317,14 +317,26 @@ function buscar() {
         }
     });
 
-    let minEffectivePrice = Infinity;
+    const todayIdx = (new Date().getDay() + 6) % 7; // Lunes:0, Domingo:6
+
+    // 1. Determinar qué opciones son válidas HOY
     options.forEach(opt => {
+        const normDays = normalizeDias(opt.dias);
+        opt.isToday = normDays.length === 0 || normDays.includes(todayIdx); // Asumimos válido hoy si no tiene restricciones
+    });
+
+    // 2. El "Destacado Global" (Estrella) solo buscará al campeón entre los de HOY
+    let bestPool = options.filter(o => o.isToday);
+    if (bestPool.length === 0) bestPool = options; // Fallback: Si NINGUNO es hoy, busca al mejor entre todos
+
+    let minEffectivePrice = Infinity;
+    bestPool.forEach(opt => {
         if (opt.effectivePrice < minEffectivePrice) minEffectivePrice = opt.effectivePrice;
     });
 
     let globalBestPerc = 0;
     if (minEffectivePrice === Infinity) {
-        options.forEach(opt => {
+        bestPool.forEach(opt => {
             const val = parseValue(opt.descuento);
             if (val > globalBestPerc) globalBestPerc = val;
         });
@@ -332,21 +344,28 @@ function buscar() {
 
     const isSpecialView = busqueda !== "" || activeCategory !== null;
     options.forEach(opt => {
-        if (isSpecialView) {
+        opt.isGlobalBest = false;
+        if (isSpecialView && bestPool.includes(opt)) {
             if (minEffectivePrice !== Infinity) {
                 opt.isGlobalBest = opt.effectivePrice === minEffectivePrice;
             } else if (globalBestPerc > 0) {
                 opt.isGlobalBest = parseValue(opt.descuento) === globalBestPerc;
             }
-        } else {
-            opt.isGlobalBest = false;
         }
     });
 
+    // 3. Ordenamiento final (Determina qué tarjeta encabeza el grupo del comercio)
     options.sort((a, b) => {
+        // Prioridad 1: Siempre gana la oferta válida HOY
+        if (a.isToday && !b.isToday) return -1;
+        if (!a.isToday && b.isToday) return 1;
+
+        // Prioridad 2: Precio Efectivo más bajo
         if (a.effectivePrice !== Infinity && b.effectivePrice !== Infinity) return a.effectivePrice - b.effectivePrice;
         if (a.effectivePrice !== Infinity) return -1;
         if (b.effectivePrice !== Infinity) return 1;
+        
+        // Prioridad 3: Mejor % de descuento
         return parseValue(b.descuento) - parseValue(a.descuento);
     });
 
