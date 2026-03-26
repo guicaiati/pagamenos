@@ -19,9 +19,21 @@ const upload = multer({ dest: uploadDir });
 const preciosPath = path.resolve("../app/precios.json");
 const promosPath = path.resolve("../app/promos.json");
 const categoriasPath = path.resolve("../app/categorias.json");
+const userBanksPath = path.resolve("../app/bancos_usuario.json");
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.static("public"));
+
+// User Banks API
+app.get("/user-banks", (req, res) => {
+  const data = fs.existsSync(userBanksPath) ? JSON.parse(fs.readFileSync(userBanksPath, "utf8")) : [];
+  res.json(data);
+});
+
+app.post("/user-banks", (req, res) => {
+  fs.writeFileSync(userBanksPath, JSON.stringify(req.body, null, 2));
+  res.json({ success: true });
+});
 
 // Base de Datos - Acceso Directo (Edición Masiva)
 app.get("/db", (req, res) => {

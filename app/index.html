@@ -24,46 +24,50 @@
 
     <div class="app-container">
         <main class="app-wrapper">
-            <header class="app-header">
-                <!-- Custom PagaMenos Mascot Logo SVG -->
-                <svg width="40" height="40" viewBox="0 0 100 100" class="logo-svg" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect x="15" y="20" width="70" height="50" rx="6" stroke="currentColor" stroke-width="6" />
-                    <path d="M35 70L30 85H70L65 70" stroke="currentColor" stroke-width="6" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    <circle cx="40" cy="40" r="4" fill="currentColor" />
-                    <circle cx="60" cy="40" r="4" fill="currentColor" />
-                    <path d="M40 55C45 60 55 60 60 55" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-                </svg>
-                <span class="logo-text">PagaMenos</span>
+            <header class="app-header" style="justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <!-- Logo Mascot SVG -->
+                    <svg width="34" height="34" viewBox="0 0 100 100" class="logo-svg" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="15" y="20" width="70" height="50" rx="6" stroke="currentColor" stroke-width="6" />
+                        <path d="M35 70L30 85H70L65 70" stroke="currentColor" stroke-width="6" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="40" cy="40" r="4" fill="currentColor" />
+                        <circle cx="60" cy="40" r="4" fill="currentColor" />
+                        <path d="M40 55C45 60 55 60 60 55" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                    <span class="logo-text">PagaMenos</span>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="search-container">
+                        <div class="search-box" id="search-box" onclick="toggleSearch(event)">
+                            <i data-lucide="search" class="text-muted"></i>
+                            <input type="text" id="busqueda" placeholder="Buscar..." autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="filter-toggle" id="filter-btn" onclick="toggleFilters(event)" title="Filtros">
+                        <i data-lucide="sliders-horizontal" style="width: 20px; height: 20px;"></i>
+                    </div>
+                </div>
             </header>
 
-            <div class="search-container">
-                <div class="search-box">
-                    <i data-lucide="search" class="text-muted" style="width: 24px; height: 24px;"></i>
-                    <input type="text" id="busqueda" placeholder="¿Qué estás buscando hoy?" autocomplete="off">
-                </div>
-
-                <div class="filter-chips">
-                    <div class="chip active" data-value="Personal Pay">Personal Pay</div>
-                    <div class="chip active" data-value="MODO">MODO</div>
-                    <div class="chip" data-value="Mercado Pago">Mercado Pago</div>
-                    <div class="chip" data-value="Tarjeta">Tarjetas</div>
-                </div>
-
-                <div class="category-filters fade-in" id="category-filters" style="margin-top: 20px;">
-                    <!-- Generado automáticamente por app.js -->
+            <div class="filters-row">
+                <div id="unified-filters" class="unified-scroll-row">
+                    <!-- Se carga dinámicamente: Bancos | Categorías -->
                 </div>
             </div>
 
-            <div id="resultados" class="fade-in">
-                <!-- Stacked cards rendered side-by-side in grid on desktop -->
+            <div id="result-count" class="result-count"></div>
+            <div id="resultados" class="promos-container">
+                <!-- Cargado por JS -->
             </div>
 
             <footer class="bottom-nav">
-                <a href="#" class="nav-link active"><i data-lucide="home" style="width: 28px; height: 28px;"></i></a>
+                <a href="index.html" class="nav-link active"><i data-lucide="home" style="width: 28px; height: 28px;"></i></a>
                 <a href="#" class="nav-link"><i data-lucide="map" style="width: 28px; height: 28px;"></i></a>
-                <a href="#" class="nav-link"><i data-lucide="user" style="width: 28px; height: 28px;"></i></a>
+                <a href="profile.html" class="nav-link"><i data-lucide="user" style="width: 28px; height: 28px;"></i></a>
             </footer>
         </main>
     </div>

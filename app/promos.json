@@ -25,7 +25,8 @@
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "burgerking-personalpay-enconoheladocon",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -53,7 +54,8 @@
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "burgerking-personalpay-encombowhopperj",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -81,7 +83,8 @@
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "burgerking-personalpay-encombokingdepo",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -109,7 +112,8 @@
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "burgerking-personalpay-encomboensalada",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -136,7 +140,8 @@
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "burgerking-personalpay-encombotostadoj",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -165,7 +170,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mcdonalds-personalpay-ensundaeconcupn",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -194,7 +200,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mcdonalds-personalpay-enmccombomedian",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -223,7 +230,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mcdonalds-personalpay-enensaladacaesa",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -251,7 +259,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mcdonalds-personalpay-en2conosconcupn",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -280,7 +289,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mcdonalds-personalpay-en2cajitasfelic",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -309,7 +319,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mostaza-personalpay-ensundaedulcede",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -338,7 +349,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mostaza-personalpay-encombotr1concu",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -367,7 +379,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mostaza-personalpay-entostadoxljqca",
-    "fecha_modificacion": "25/3/2026, 20:14:48"
+    "fecha_modificacion": "25/3/2026, 20:14:48",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -396,7 +409,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mostaza-personalpay-enbigbangchedda",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -424,7 +438,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "mostaza-personalpay-enpollocrispyco",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "MODO",
@@ -456,7 +471,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
     "slug": "gastronomasupervielle-modo-enbaresyrestaur",
-    "fecha_modificacion": "25/3/2026, 10:47:57"
+    "fecha_modificacion": "25/3/2026, 10:47:57",
+    "banco": "Supervielle"
   },
   {
     "medio_pago": "MODO",
@@ -488,7 +504,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
     "slug": "gastronomasupervielle-modo-enbaresyrestaur",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Supervielle"
   },
   {
     "medio_pago": "MODO",
@@ -520,7 +537,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
     "slug": "gastronomasupervielle-modo-enbaresyrestaur",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Supervielle"
   },
   {
     "medio_pago": "MODO",
@@ -548,7 +566,8 @@
     "vigencia": "31/05/2026",
     "forma_pago": "QR",
     "slug": "gelato-modo-consuperviellem",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Supervielle"
   },
   {
     "medio_pago": "MODO",
@@ -576,7 +595,8 @@
     "vigencia": "31/05/2026",
     "forma_pago": "Tarjeta",
     "slug": "farmaciasbna-modo-10reintegro3cuo",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "BNA"
   },
   {
     "medio_pago": "MODO",
@@ -604,7 +624,8 @@
     "vigencia": "31/05/2026",
     "forma_pago": "QR",
     "slug": "pranzoempanadas-modo-consuperviellem",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Supervielle"
   },
   {
     "medio_pago": "Personal Pay",
@@ -632,7 +653,8 @@
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
     "slug": "wendys-personalpay-enhomestyleconv",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -661,7 +683,8 @@
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
     "slug": "wendys-personalpay-encombodavessim",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -689,7 +712,8 @@
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
     "slug": "wendys-personalpay-encapuchinogran",
-    "fecha_modificacion": "25/3/2026, 20:15:31"
+    "fecha_modificacion": "25/3/2026, 20:15:31",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -717,7 +741,8 @@
     "vigencia": "31/08/2026",
     "forma_pago": "Tarjeta",
     "slug": "wendys-personalpay-encapuchinogran",
-    "fecha_modificacion": "25/3/2026, 20:15:36"
+    "fecha_modificacion": "25/3/2026, 20:15:36",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "Personal Pay",
@@ -746,7 +771,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "milanga-personalpay-encomboromanoju",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "medio_pago": "MODO",
@@ -772,7 +798,8 @@
     "vigencia": "26/03/2026",
     "forma_pago": "QR",
     "slug": "soloempanadas-modo-enempanadasconm",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": ""
   },
   {
     "medio_pago": "MODO",
@@ -798,7 +825,8 @@
     "vigencia": "26/03/2026",
     "forma_pago": "QR",
     "slug": "kioscodeempanadas-modo-enempanadasconm",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": ""
   },
   {
     "medio_pago": "MODO",
@@ -825,7 +853,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR",
     "slug": "mokkacoffeestore-modo-encafeteraconmo",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": ""
   },
   {
     "medio_pago": "Tarjeta",
@@ -854,7 +883,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "NFC",
     "slug": "colectivos-tarjeta-enpasajesdecole",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": ""
   },
   {
     "medio_pago": "Tarjeta",
@@ -883,7 +913,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "NFC",
     "slug": "subte-tarjeta-enpasajesdesubt",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": ""
   },
   {
     "medio_pago": "Tarjeta",
@@ -914,7 +945,8 @@
     "vigencia": "30/06/2026",
     "forma_pago": "NFC",
     "slug": "starbucks-tarjeta-mochalattefrapp",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": ""
   },
   {
     "medio_pago": "Tarjeta",
@@ -943,7 +975,8 @@
     "vigencia": "30/06/2026",
     "forma_pago": "Tarjeta",
     "slug": "usainboltstracksrecords-tarjeta-eneltotaldelacu",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": ""
   },
   {
     "medio_pago": "Tarjeta",
@@ -971,7 +1004,8 @@
     "detalle": "En el total de la cuenta con Tarjeta VISA (Classic/Gold/Platinum/Signature/Prepaga)",
     "vigencia": "30/06/2026",
     "slug": "barritademar-tarjeta-eneltotaldelacu",
-    "fecha_modificacion": "25/3/2026, 20:16:03"
+    "fecha_modificacion": "25/3/2026, 20:16:03",
+    "banco": ""
   },
   {
     "comercio": "Chungo",
@@ -996,7 +1030,8 @@
     "vigencia": "30/06/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "chungo-personalpay-14kgdeheladoder",
-    "fecha_modificacion": "25/3/2026, 19:57:34"
+    "fecha_modificacion": "25/3/2026, 19:57:34",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "All Day",
@@ -1021,7 +1056,8 @@
     "vigencia": "31/08/2027",
     "forma_pago": "QR/Tarjeta",
     "slug": "allday-personalpay-pagandocontutar",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Farmalife",
@@ -1046,7 +1082,8 @@
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "farmalife-personalpay-10reintegroopag",
-    "fecha_modificacion": "25/3/2026, 10:11:45"
+    "fecha_modificacion": "25/3/2026, 10:11:45",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Chungo",
@@ -1071,7 +1108,8 @@
     "vigencia": "30/06/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "chungo-personalpay-rindasroof3erte",
-    "fecha_modificacion": "25/3/2026, 17:17:03"
+    "fecha_modificacion": "25/3/2026, 17:17:03",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Freddo",
@@ -1096,7 +1134,8 @@
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
     "slug": "freddo-personalpay-2x1pagando2x1en-q2u",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Freddo",
@@ -1121,7 +1160,8 @@
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
     "slug": "freddo-personalpay-pagandoenel14kg-6ja",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Freddo",
@@ -1146,7 +1186,8 @@
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
     "slug": "freddo-personalpay-pagandoenelkilo-ok6",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Freddo",
@@ -1165,7 +1206,8 @@
     "vigencia": "30/06/2027",
     "forma_pago": "QR/Tarjeta",
     "slug": "freddo-personalpay-2x1martespagand-qq1",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Heladera Smart",
@@ -1190,7 +1232,8 @@
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "heladerasmart-personalpay-heladerasmartpa",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Heladera Smart",
@@ -1215,7 +1258,8 @@
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "heladerasmart-personalpay-heladerasmartpa-qgc",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Heladera Smart",
@@ -1240,7 +1284,8 @@
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "heladerasmart-personalpay-heladerasmartpa-cfk",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Heladera Smart",
@@ -1265,7 +1310,8 @@
     "vigencia": "31/05/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "heladerasmart-personalpay-heladerasmartpa-47w",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Tento",
@@ -1286,7 +1332,8 @@
     "vigencia": "30/04/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "tento-personalpay-2x1lunesavierne-zix",
-    "fecha_modificacion": "25/3/2026, 20:17:26"
+    "fecha_modificacion": "25/3/2026, 20:17:26",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Coto",
@@ -1306,7 +1353,8 @@
     "vigencia": "28/05/2026",
     "forma_pago": "NFC",
     "slug": "coto-cualquiermedio-supermercadojue",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Carrefour",
@@ -1330,7 +1378,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "carrefour-personalpay-sbadopromocinex-uk3",
-    "fecha_modificacion": "25/3/2026, 17:15:01"
+    "fecha_modificacion": "25/3/2026, 17:15:01",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Telefonía",
@@ -1355,7 +1404,8 @@
     "vigencia": "31/03/2026",
     "forma_pago": "Tarjeta",
     "slug": "comercio-personalpay-recargasmovista-10y",
-    "fecha_modificacion": "25/3/2026, 20:44:13"
+    "fecha_modificacion": "25/3/2026, 20:44:13",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Burger King",
@@ -1381,7 +1431,8 @@
     "vigencia": "31/12/2026",
     "forma_pago": "QR/Tarjeta",
     "slug": "burgerking-personalpay-pagando30encomb-pep",
-    "fecha_modificacion": "24/3/2026, 23:10:09"
+    "fecha_modificacion": "24/3/2026, 23:10:09",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Comercio",
@@ -1404,7 +1455,8 @@
     "vigencia": "01/03/2026",
     "forma_pago": "QR/Tarjeta/NFC",
     "slug": "comercio-cualquiermedio-promocinvlidade",
-    "fecha_modificacion": "25/3/2026, 08:59:48"
+    "fecha_modificacion": "25/3/2026, 08:59:48",
+    "banco": "BNA"
   },
   {
     "comercio": "Combustible",
@@ -1423,7 +1475,8 @@
     "vigencia": "31/03/26",
     "forma_pago": "QR/NFC",
     "slug": "aprovechde-modo-eaprovech10dere-50t",
-    "fecha_modificacion": "25/3/2026, 20:00:40"
+    "fecha_modificacion": "25/3/2026, 20:00:40",
+    "banco": "Supervielle"
   },
   {
     "comercio": "Combustible",
@@ -1442,7 +1495,8 @@
     "vigencia": "30/06/2026",
     "forma_pago": "QR",
     "slug": "comercio-cualquiermedio-reintegroencomb",
-    "fecha_modificacion": "25/3/2026, 20:00:40"
+    "fecha_modificacion": "25/3/2026, 20:00:40",
+    "banco": "Nación"
   },
   {
     "comercio": "Coto",
@@ -1462,7 +1516,8 @@
     "vigencia": "28/05/2026",
     "forma_pago": "NFC",
     "slug": "coto-cualquiermedio-nfc30deahorrota-xn0",
-    "fecha_modificacion": "25/3/2026, 10:09:11"
+    "fecha_modificacion": "25/3/2026, 10:09:11",
+    "banco": "Supervielle"
   },
   {
     "comercio": "El Desembarco",
@@ -1488,7 +1543,8 @@
     ],
     "forma_pago": "QR/Tarjeta",
     "slug": "eldesembarco-personalpay-pagandoeneltota",
-    "fecha_modificacion": "25/3/2026, 16:26:49"
+    "fecha_modificacion": "25/3/2026, 16:26:49",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Café Martínez",
@@ -1514,7 +1570,8 @@
     ],
     "forma_pago": "QR/Tarjeta",
     "slug": "cafmartnez-personalpay-cafmartnezpagan-dl3",
-    "fecha_modificacion": "25/3/2026, 20:24:05"
+    "fecha_modificacion": "25/3/2026, 20:24:05",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "Colectivos",
@@ -1540,7 +1597,8 @@
     ],
     "forma_pago": "NFC",
     "slug": "transporte-cualquiermedio-exclusivopromoc",
-    "fecha_modificacion": "25/3/2026, 20:37:52"
+    "fecha_modificacion": "25/3/2026, 20:37:52",
+    "banco": "Personal Pay"
   },
   {
     "comercio": "DIA%",
@@ -1561,7 +1619,8 @@
     ],
     "forma_pago": "QR",
     "slug": "logo-mercadopago-categorasbuscar",
-    "fecha_modificacion": "25/3/2026, 23:11:20"
+    "fecha_modificacion": "25/3/2026, 23:11:20",
+    "banco": ""
   },
   {
     "comercio": "Carrefour",
@@ -1581,6 +1640,7 @@
     ],
     "forma_pago": "QR",
     "slug": "carrefour-modo-30deahorroenela-kll",
-    "fecha_modificacion": "25/3/2026, 23:17:52"
+    "fecha_modificacion": "25/3/2026, 23:17:52",
+    "banco": ""
   }
 ]

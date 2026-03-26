@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario | PagaMenos</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .v-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: grab;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .v-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(225deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+            z-index: 0;
+        }
+
+        .cards-carousel::-webkit-scrollbar { display: none; }
+
+        .profile-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .section-tab {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 5px;
+        }
+
+        .section-tab::before {
+            content: "";
+            width: 4px;
+            height: 18px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        /* Modal Styles */
+        #add-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 450px;
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .entity-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: background 0.2s;
+        }
+
+        .entity-item:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        #entity-search {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: white;
+            margin-bottom: 20px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .sync-badge {
+            font-size: 10px;
+            font-weight: 900;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: opacity 0.3s;
+            opacity: 0;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body class="profile-page">
+    <div class="glow-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <main class="app-wrapper" style="padding: 20px 20px 100px;">
+            <header class="app-header" style="justify-content: space-between; margin-bottom: 30px; background: transparent; border: none; box-shadow: none; position: relative; padding: 10px 0;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <a href="index.html" style="color: var(--accent-green);"><i data-lucide="chevron-left" style="width: 24px; height: 24px;"></i></a>
+                    <span class="logo-text" style="font-size: 18px;">MI PERFIL</span>
+                </div>
+                <!-- Status Badge -->
+                <div id="sync-status" class="sync-badge">
+                   <i data-lucide="check" style="width: 12px; height: 12px;"></i> SINCRO OK
+                </div>
+                <button style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                    <i data-lucide="settings" style="width: 18px; height: 18px;"></i>
+                </button>
+            </header>
+
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #a064ff, #60a5fa); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; border: 3px solid rgba(255,255,255,0.1);">
+                    <i data-lucide="user" style="width: 45px; height: 45px; color: white;"></i>
+                </div>
+                <h2 style="font-size: 26px; font-weight: 800; color: white; margin-bottom: 5px;">Gastón Pante</h2>
+                <p style="color: var(--text-muted); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px;">Cazador de Ofertas</p>
+                
+                <div style="display: flex; gap: 15px; width: 100%;">
+                    <div class="stat-box">
+                        <span style="font-size: 10px; font-weight: 800; color: var(--accent-green); text-transform: uppercase;">Ahorro Total</span>
+                        <div style="font-size: 22px; font-weight: 900; color: white; margin-top: 5px;">$14.580</div>
+                    </div>
+                    <div class="stat-box">
+                        <span style="font-size: 10px; font-weight: 800; color: #a064ff; text-transform: uppercase;">Promos Usadas</span>
+                        <div style="font-size: 22px; font-weight: 900; color: white; margin-top: 5px;">32</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Section -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <div class="section-tab">
+                    <i data-lucide="credit-card" style="width: 20px; height: 20px; color: var(--accent-green);"></i>
+                    <h3 style="font-size: 16px; font-weight: 800; color: white; text-transform: uppercase;">Mis tarjetas y billeteras</h3>
+                </div>
+                <button onclick="openModal()" style="background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3); color: var(--accent-green); padding: 6px 14px; border-radius: 12px; font-weight: 800; font-size: 11px; cursor: pointer;">
+                    + AGREGAR
+                </button>
+            </div>
+
+            <div id="cards-container" class="cards-carousel" style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 5px 23px; scroll-snap-type: x mandatory;">
+                <!-- Cargado por JS -->
+            </div>
+
+            <footer class="bottom-nav">
+                <a href="index.html" class="nav-link"><i data-lucide="home" style="width: 28px; height: 28px;"></i></a>
+                <a href="#" class="nav-link"><i data-lucide="map" style="width: 28px; height: 28px;"></i></a>
+                <a href="profile.html" class="nav-link active"><i data-lucide="user" style="width: 28px; height: 28px;"></i></a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal para Agregar Entidad -->
+    <div id="add-modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-weight: 900; color: white; font-size: 20px;">Nueva Entidad</h2>
+                <i data-lucide="x" style="cursor: pointer; color: var(--text-muted);" onclick="closeModal()"></i>
+            </div>
+            <input type="text" id="entity-search" placeholder="Busca banco o tarjeta..." oninput="filterEntities()">
+            <div id="entities-list" style="max-height: 350px; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script>
+        let availableEntities = {};
+        let userBanks = [];
+
+        async function init() {
+            try {
+                // Primero intentar cargar del servidor
+                const [entRes, userRes] = await Promise.all([
+                    fetch('entidades_disponibles.json').then(r => r.json()),
+                    fetch('http://localhost:3000/user-banks').then(r => r.json()).catch(e => {
+                        // Si falla el servidor, usar localStorage o el JSON estático
+                        const local = localStorage.getItem('userBanks');
+                        return local ? JSON.parse(local) : fetch('bancos_usuario.json').then(r => r.json());
+                    })
+                ]);
+                availableEntities = entRes;
+                userBanks = userRes;
+                renderCards();
+            } catch (e) {
+                console.error("Error cargando datos:", e);
+            }
+        }
+
+        async function saveUserBanks() {
+            // Mostrar indicador de guardado
+            const badge = document.getElementById('sync-status');
+            badge.style.opacity = 1;
+            badge.innerHTML = '<i data-lucide="refresh-cw" style="width: 12px; height: 12px; animation: spin 1s linear infinite;"></i> GUARDANDO...';
+            lucide.createIcons();
+
+            // Guardar localmente siempre por si acaso
+            localStorage.setItem('userBanks', JSON.stringify(userBanks));
+
+            try {
+                const res = await fetch('http://localhost:3000/user-banks', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userBanks)
+                });
+                
+                if (res.ok) {
+                    badge.innerHTML = '<i data-lucide="check" style="width: 12px; height: 12px;"></i> GUARDADO';
+                } else {
+                    throw new Error("HTTP error");
+                }
+            } catch (e) {
+                badge.style.background = 'rgba(239, 68, 68, 0.1)';
+                badge.style.color = '#ef4444';
+                badge.innerHTML = '<i data-lucide="alert-circle" style="width: 12px; height: 12px;"></i> LOCAL ONLY';
+            } finally {
+                lucide.createIcons();
+                setTimeout(() => { badge.style.opacity = 0; }, 3000);
+            }
+        }
+
+        function toggleBankStatus(id) {
+            const bank = userBanks.find(b => b.id === id);
+            if (bank) {
+                bank.status = (bank.status === 'inactive') ? 'active' : 'inactive';
+                renderCards();
+                saveUserBanks();
+            }
+        }
+
+        function removeBank(id) {
+            if(confirm("¿Eliminar tarjeta del perfil?")) {
+                userBanks = userBanks.filter(b => b.id !== id);
+                renderCards();
+                saveUserBanks();
+            }
+        }
+
+        function renderCards() {
+            const container = document.getElementById('cards-container');
+            container.innerHTML = "";
+
+            userBanks.forEach(bank => {
+                const config = availableEntities[bank.id] || { label: bank.id, gradient: 'linear-gradient(135deg, #444, #222)' };
+                const isInactive = bank.status === 'inactive';
+
+                const card = document.createElement('div');
+                card.className = "v-card";
+                card.style.cssText = `flex:0 0 280px; height:180px; border-radius:24px; padding:20px; scroll-snap-align:center; background:${config.gradient}; opacity:${isInactive?0.6:1}; filter:${isInactive?'grayscale(0.3)':'none'}; border:1px solid rgba(255,255,255,0.15);`;
+                
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; z-index: 1;">
+                        <div style="width: 45px; height: 32px; background: rgba(255, 215, 0, 0.8); border-radius: 6px; box-shadow: inset 0 0 8px rgba(0,0,0,0.15);"></div>
+                        <div style="text-align: right;">
+                             <span style="font-weight: 900; font-size: 13px; letter-spacing: 1px; display: block;">${config.label.toUpperCase()}</span>
+                             <span style="font-size: 9px; font-weight: 900; opacity: 0.8;">${isInactive ? 'INACTIVA' : 'ACTIVA'}</span>
+                        </div>
+                    </div>
+                    <div style="z-index: 1;">
+                        <div style="font-size: 18px; letter-spacing: 2px; font-weight: 500; margin-bottom: 12px; font-family: 'monospace';">•••• •••• •••• ${bank.number || '0000'}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                            <div style="font-size: 11px;">
+                                <span style="font-weight: 800; display: block; text-transform: uppercase;">GASTON PANTE</span>
+                                <div style="display: flex; gap: 8px; margin-top: 5px;">
+                                    <button onclick="toggleBankStatus('${bank.id}')" style="background: rgba(255,255,255,0.1); border:none; padding: 4px 10px; border-radius:8px; font-size:9px; color:white; font-weight:900; cursor:pointer;">${isInactive?'ACTIVAR':'DESACTIVAR'}</button>
+                                    <button onclick="removeBank('${bank.id}')" style="background: rgba(239, 68, 68, 0.2); border:none; padding: 4px 10px; border-radius:8px; font-size:9px; color:#f87171; font-weight:900; cursor:pointer;">QUITAR</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: -5px;">
+                                <div style="width: 25px; height: 25px; border-radius: 50%; background: rgba(255,255,255,0.3); z-index: 2;"></div>
+                                <div style="width: 25px; height: 25px; border-radius: 50%; background: rgba(255,255,255,0.2); margin-left: -12px; z-index: 1;"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function openModal() {
+            document.getElementById('add-modal').style.display = 'flex';
+            filterEntities();
+        }
+
+        function closeModal() {
+            document.getElementById('add-modal').style.display = 'none';
+        }
+
+        function filterEntities() {
+            const query = document.getElementById('entity-search').value.toLowerCase();
+            const list = document.getElementById('entities-list');
+            list.innerHTML = "";
+
+            Object.keys(availableEntities).forEach(key => {
+                const ent = availableEntities[key];
+                if (ent.label.toLowerCase().includes(query)) {
+                    const item = document.createElement('div');
+                    item.className = "entity-item";
+                    item.innerHTML = `
+                        <div style="width: 14px; height: 14px; border-radius: 50%; background: ${ent.gradient}; border: 1px solid rgba(255,255,255,0.2);"></div>
+                        <div style="flex: 1; font-weight: 800; color: white;">${ent.label}</div>
+                        <i data-lucide="plus" style="width: 18px; height: 18px; color: var(--accent-green);"></i>
+                    `;
+                    item.onclick = async () => {
+                        if(!userBanks.find(b => b.id === key)) {
+                            userBanks.push({ id: key, number: Math.floor(1000 + Math.random() * 9000).toString(), status: 'active' });
+                            renderCards();
+                            await saveUserBanks();
+                        }
+                        closeModal();
+                    };
+                    list.appendChild(item);
+                }
+            });
+            lucide.createIcons();
+        }
+
+        init();
+    </script>
+
+    <style>
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</body>
+
+</html>

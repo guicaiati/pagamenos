@@ -333,6 +333,7 @@ function renderPreview(data) {
             </td>
             <td><span style="color:rgba(255,255,255,0.1);">-</span></td>
             <td><span style="color:rgba(255,255,255,0.1);">-</span></td>
+            <td><span style="color:rgba(255,255,255,0.1);">-</span></td>
             <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="producto" style="outline:none; cursor:text;">${p.producto}</td>
             <td contenteditable="true" data-type="precios" data-idx="${idx}" data-field="precio" class="tag-price" style="outline:none; cursor:text; font-weight:900; color:${p.status === 'update' ? 'var(--accent-green)' : 'var(--text-main)'}; font-size:16px;">$${p.precio}${beforePrice}</td>
             <td><span style="color:rgba(255,255,255,0.1);">-</span></td>
@@ -425,6 +426,9 @@ function renderPreview(data) {
             <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="medio_pago" style="outline:none; color:#a064ff;">
                 ${p.medio_pago}
             </td>
+            <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="banco" style="outline:none; color:var(--accent-green); font-weight:700;">
+                ${p.banco || ''}
+            </td>
             <td contenteditable="true" data-type="promos" data-idx="${idx}" data-field="forma_pago" style="outline:none; color:var(--text-muted);">
                 ${p.forma_pago || 'QR/Tarjeta'}
             </td>
@@ -475,6 +479,9 @@ function renderPreview(data) {
                 </td>
                 <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
                     <span style="color:${color('medio_pago')}">${p.original.medio_pago}</span>
+                </td>
+                <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
+                    <span style="color:${color('banco')}">${p.original.banco || '-'}</span>
                 </td>
                 <td style="background:rgba(160, 100, 255, 0.05); border-bottom:1px solid rgba(160, 100, 255, 0.2); padding:15px 20px;">
                     <span style="color:${color('forma_pago')}">${p.original.forma_pago || 'QR/Tarjeta'}</span>
@@ -747,6 +754,7 @@ window.renderDbTable = function() {
                         </div>
                     </td>
                     <td style="padding:16px 14px; outline:none; color:#a064ff; font-size:12px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="medio_pago">${item.medio_pago || ''}</td>
+                    <td style="padding:16px 14px; outline:none; color:var(--accent-green); font-size:12px; font-weight:700;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="banco">${item.banco || ''}</td>
                     <td style="padding:16px 14px; outline:none; font-size:12px;" contenteditable="true" data-dbtype="promos" data-dbidx="${idx}" data-dbfield="forma_pago">${item.forma_pago || ''}</td>
                     <td style="padding:16px 14px; vertical-align:middle;">
                         ${renderDaysChips(item.dias, idx, 'db')}
@@ -765,6 +773,7 @@ window.renderDbTable = function() {
                         <span style="background:rgba(255,160,50,0.08); color:orange; padding:4px 8px; border-radius:4px; font-size:9px; font-weight:800;">PRECIO</span>
                     </td>
                     <td style="padding:14px 12px; outline:none;" contenteditable="true" data-dbtype="precios" data-dbidx="${idx}" data-dbfield="comercio">${item.comercio || ''}</td>
+                    <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
                     <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
                     <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>
                     <td style="padding:14px 12px; color:rgba(255,255,255,0.2);">-</td>

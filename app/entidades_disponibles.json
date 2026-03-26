@@ -1,0 +1,65 @@
+{
+  "supervielle": {
+    "label": "Banco Supervielle",
+    "color": "red",
+    "gradient": "linear-gradient(135deg, #ef4444 0%, #991b1b 100%)",
+    "icon": "landmark",
+    "network": "Visa/Master"
+  },
+  "bna": {
+    "label": "Banco Nación",
+    "color": "blue",
+    "gradient": "linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%)",
+    "icon": "landmark",
+    "network": "MasterCard"
+  },
+  "personalpay": {
+    "label": "Personal Pay",
+    "color": "purple",
+    "gradient": "linear-gradient(135deg, #a064ff 0%, #6d28d9 100%)",
+    "icon": "star",
+    "network": "Visa Prepaid"
+  },
+  "galicia": {
+    "label": "Banco Galicia",
+    "color": "orange",
+    "gradient": "linear-gradient(135deg, #f97316 0%, #c2410c 100%)",
+    "icon": "landmark",
+    "network": "Visa/Master"
+  },
+  "bbva": {
+    "label": "BBVA",
+    "color": "darkblue",
+    "gradient": "linear-gradient(135deg, #1e3a8a 0%, #172554 100%)",
+    "icon": "landmark",
+    "network": "Visa"
+  },
+  "santander": {
+    "label": "Santander",
+    "color": "red",
+    "gradient": "linear-gradient(135deg, #ef4444 0%, #7f1d1d 100%)",
+    "icon": "landmark",
+    "network": "Visa/Master/Amex"
+  },
+  "provincia": {
+    "label": "Banco Provincia",
+    "color": "green",
+    "gradient": "linear-gradient(135deg, #22c55e 0%, #166534 100%)",
+    "icon": "landmark",
+    "network": "Visa/Master"
+  },
+  "brubank": {
+    "label": "Brubank",
+    "color": "pink",
+    "gradient": "linear-gradient(135deg, #ec4899 0%, #be185d 100%)",
+    "icon": "smartphone",
+    "network": "Visa"
+  },
+  "mercadopago": {
+    "label": "Mercado Pago",
+    "color": "lightblue",
+    "gradient": "linear-gradient(135deg, #009ee3 0%, #0077b5 100%)",
+    "icon": "smartphone",
+    "network": "Visa/Master"
+  }
+}

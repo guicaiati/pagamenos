@@ -1,0 +1,20 @@
+[
+  {
+    "id": "personalpay",
+    "status": "active",
+    "number": "4589",
+    "holder": "GASTON PANTE"
+  },
+  {
+    "id": "supervielle",
+    "status": "active",
+    "number": "1205",
+    "holder": "GASTON PANTE"
+  },
+  {
+    "id": "mercadopago",
+    "status": "active",
+    "number": "8874",
+    "holder": "GASTON PANTE"
+  }
+]
